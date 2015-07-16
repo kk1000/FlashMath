@@ -11,7 +11,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Splash_Screen);
+        getSupportActionBar().hide();
+        setContentView(R.layout.splash_screen);
     }
 
     @Override
