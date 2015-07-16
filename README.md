@@ -1,2 +1,2 @@
 # FlashMath
-a fun and educational interactive game for children
+A fun and educational interactive game for children
