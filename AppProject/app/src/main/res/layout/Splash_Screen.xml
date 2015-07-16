@@ -13,7 +13,8 @@ xmlns:android = "http://schemas.android.com/apk/res/android"
         android:layout_height = "fill_parent"
         android:textSize = "50sp"
         android:textColor = "#000000"
-        android:gravity = "top"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="50px"
         android:text = "@string/app_name"
         android:id = "@+id/logo1"
         android:textStyle = "normal"
@@ -22,7 +23,7 @@ xmlns:android = "http://schemas.android.com/apk/res/android"
     <ImageView
         android:layout_width="300px"
         android:layout_height="300px"
-        android:layout_gravity="center"
+        android:layout_marginBottom="500px"
         android:src="@drawable/lightning_bolt"/>
 
 </LinearLayout>
