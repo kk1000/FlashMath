@@ -1,15 +1,20 @@
 package mobileapplicationdevelopment.flashmath;
 
+
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.content.Intent;
+import android.os.Handler;
+import android.app.Activity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class splash extends ActionBarActivity {
 
+    public static int Splash_Time = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,16 @@ public class MainActivity extends ActionBarActivity {
         TextView mySlogan = (TextView) findViewById(R.id.slogan);
         myTextView.setTypeface(myFont);
         mySlogan.setTypeface(myFont);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(splash.this, mobileapplicationdevelopment.flashmath.home.class);
+                startActivity(i);
+                finish();
+            }
+
+        }, Splash_Time);
     }
 
     @Override
@@ -43,4 +58,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
