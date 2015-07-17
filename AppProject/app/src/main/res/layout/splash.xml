@@ -21,7 +21,7 @@ xmlns:android = "http://schemas.android.com/apk/res/android"
         android:typeface = "normal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-
+private static int SPLASH_TIME_OUT = 3000;
     <ImageView
         android:layout_width="284dp"
         android:layout_height="284dp"
