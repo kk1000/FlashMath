@@ -1,9 +1,11 @@
 package mobileapplicationdevelopment.flashmath;
 
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -11,7 +13,13 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.splash);
+        Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+        TextView myTextView = (TextView) findViewById(R.id.logo1);
+        TextView mySlogan = (TextView) findViewById(R.id.slogan);
+        myTextView.setTypeface(myFont);
+        mySlogan.setTypeface(myFont);
     }
 
     @Override

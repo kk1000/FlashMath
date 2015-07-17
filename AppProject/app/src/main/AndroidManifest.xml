@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mobileapplicationdevelopment.flashmath" >
 
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
