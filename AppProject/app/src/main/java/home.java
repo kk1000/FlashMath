@@ -1,12 +1,14 @@
 package mobileapplicationdevelopment.flashmath;
 
+
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
+import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 import mobileapplicationdevelopment.flashmath.R;
 
@@ -23,8 +25,25 @@ public class home extends ActionBarActivity{
         //Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         //TextView myTextView = (TextView) findViewById(R.id.logo1);
         //TextView mySlogan = (TextView) findViewById(R.id.slogan);
-        //myTextView.setTypeface(myFont);
+
         //mySlogan.setTypeface(myFont);
+        Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+        TextView myTextView = (TextView) findViewById(R.id.start_button);
+        myTextView.setTypeface(myFont);
+
+
+        Button button = (Button) findViewById(R.id.start_button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StartGame(v);
+            }
+        });
+    }
+
+    public void StartGame(View v) {
+            startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.playgame.class));
     }
 
 //    @Override
