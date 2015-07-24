@@ -6,7 +6,7 @@
     android:layout_height = "match_parent"
     android:background = "#e5f9ff">
 
-
+<!--FlashMath Logo-->
     <ImageView
         android:layout_width="350dp"
         android:layout_height="110dp"
@@ -14,7 +14,7 @@
         android:id="@+id/playTitle"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp" />
-
+<!--Level-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
         android:layout_marginLeft="30dp"
         android:layout_alignBottom="@+id/easy" />
 
+    <!-- Easy Button-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
         android:layout_below="@+id/playTitle"
         android:layout_centerHorizontal="true" />
 
+    <!-- Hard Button-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,6 +49,19 @@
         android:layout_alignRight="@+id/playTitle"
         android:layout_marginRight="30dp" />
 
+    <!-- Type-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/type"
+        android:id="@+id/type"
+        android:textSize = "30sp"
+        android:textColor = "#000000"
+        android:layout_below="@+id/level"
+        android:layout_alignLeft="@+id/level"
+        android:layout_alignStart="@+id/level"
+        android:paddingTop="60dp" />
+
     <!--Begin Game Button-->
     <Button
         android:layout_width="400px"
@@ -56,9 +71,10 @@
         android:background="#ffffff"
         android:id="@+id/start_button"
         android:layout_marginBottom="63dp"
-        android:onCl
+        android:selectAllOnFocus="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
 
     <!-- Settings Button-->
     <Button
@@ -68,10 +84,10 @@
         android:id="@+id/settings"
         android:background="#ffffff"
         android:textSize="25sp"
-        android:layout_marginBottom="6dp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/start_button"
-        android:layout_alignStart="@+id/start_button" />
+        android:layout_alignStart="@+id/start_button"
+        android:layout_marginBottom="6dp" />
 
 
 
