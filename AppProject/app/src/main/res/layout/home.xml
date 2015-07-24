@@ -47,6 +47,13 @@
         android:layout_alignRight="@+id/playTitle"
         android:layout_marginRight="30dp" />
 
+    <ImageButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:src="@drawable/settings"
+        android:id="@+id/settings"/>
+
+
     <Button
         android:layout_width="400px"
         android:layout_height="100px"

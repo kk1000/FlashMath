@@ -24,8 +24,12 @@
 
         <!--Home Screen -->
         <activity android:name=".home" android:label = "@string/app_name"/>
+
         <!-- Play Game-->
         <activity android:name=".playgame"/>
+
+        <!-- Settings-->
+        <activity android:name=".settings"/>
     </application>
 
 </manifest>
