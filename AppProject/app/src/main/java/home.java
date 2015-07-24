@@ -1,13 +1,17 @@
 package mobileapplicationdevelopment.flashmath;
 
+
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.os.Handler;
+import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 import mobileapplicationdevelopment.flashmath.R;
 
@@ -40,6 +44,20 @@ public class home extends ActionBarActivity{
                 // TODO call function hard
             }
         });
+
+
+        Button button = (Button) findViewById(R.id.start_button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StartGame(v);
+            }
+        });
+    }
+
+    public void StartGame(View v) {
+            startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.playgame.class));
     }
 
 //    @Override

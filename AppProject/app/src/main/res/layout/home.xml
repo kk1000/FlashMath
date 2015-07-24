@@ -35,7 +35,6 @@
         android:textColor = "#000000"
         android:layout_below="@+id/playTitle"
         android:layout_centerHorizontal="true" />
-    <!--android:layout_toLeftOf="@+id/easy" />-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,5 +46,17 @@
         android:layout_below="@+id/playTitle"
         android:layout_alignRight="@+id/playTitle"
         android:layout_marginRight="30dp" />
+
+    <Button
+        android:layout_width="400px"
+        android:layout_height="100px"
+        android:text = "@string/start_game"
+        android:textSize="25sp"
+        android:background="#ffffff"
+        android:id="@+id/start_button"
+        android:layout_marginBottom="77dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
