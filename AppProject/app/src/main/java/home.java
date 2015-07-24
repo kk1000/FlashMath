@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup.*;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.app.Activity;
 
@@ -25,11 +27,13 @@ public class home extends Activity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.home);
-        Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+        final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         final TextView myLevel = (TextView) findViewById(R.id.level);
         final TextView myEasy = (TextView) findViewById(R.id.easy);
         final TextView myHard = (TextView) findViewById(R.id.hard);
         final TextView myType = (TextView) findViewById(R.id.type);
+        final TextView User = (TextView) findViewById(R.id.user);
+        User.setTypeface(myFont);
         myType.setTypeface(myFont);
         myLevel.setTypeface(myFont);
 
@@ -39,8 +43,11 @@ public class home extends Activity{
         myEasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP,30);
-                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP,40);
+                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+                myHard.setTypeface(myFont,Typeface.NORMAL);
+                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+                myEasy.setTypeface(myFont,Typeface.BOLD);
+
             }
         });
 
@@ -49,18 +56,44 @@ public class home extends Activity{
         myHard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP,30);
-                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP,40);
-
+                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+                myEasy.setTypeface(myFont, Typeface.NORMAL);
+                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+                myHard.setTypeface(myFont,Typeface.BOLD);
             }
         });
+
+
+        final RadioGroup difficultyGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        final RadioButton addButton = (RadioButton) findViewById(R.id.add);
+        final RadioButton subtractButton = (RadioButton) findViewById(R.id.subtract);
+        final RadioButton multiplyButton = (RadioButton) findViewById(R.id.multiply);
+        final RadioButton divideButton = (RadioButton) findViewById(R.id.divide);
+
+        difficultyGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+
+            public void onCheckedChanged(RadioGroup group, int checkId) {
+                if(checkId == R.id.add) {
+                    addButton.setBackgroundResource(R.drawable.red_x);
+                }
+                else if (checkId == R.id.subtract) {
+                    subtractButton.setWidth(50);
+                }
+                else if (checkId == R.id.multiply) {
+                    multiplyButton.setWidth(5);
+                }
+                else {
+                    divideButton.setWidth(5);
+                }
+            }
+        });
+
 
         final Button SettingsButton = (Button) findViewById(R.id.settings);
         SettingsButton.setTypeface(myFont);
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //SettingsButton.setHeight(120);
-                //SettingsButton.setWidth(420);
                 Settings(v);
             }
         });
@@ -70,11 +103,11 @@ public class home extends Activity{
         StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //SettingsButton.setHeight(120);
-                //SettingsButton.setWidth(420);
                 StartGame(v);
             }
         });
+
+
     }
 
     public void Settings(View v) {

@@ -13,7 +13,8 @@
         android:src="@drawable/title"
         android:id="@+id/playTitle"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"/>
 <!--Level-->
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
         android:textColor = "#000000"
         android:layout_below="@id/playTitle"
         android:layout_marginLeft="30dp"
-        android:layout_alignBottom="@+id/easy" />
+        android:paddingBottom="45dp"/>
 
     <!-- Easy Button-->
     <TextView
@@ -35,7 +36,8 @@
         android:textSize = "30sp"
         android:textColor = "#000000"
         android:layout_below="@+id/playTitle"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="45dp"/>
 
     <!-- Hard Button-->
     <TextView
@@ -47,9 +49,25 @@
         android:textColor = "#000000"
         android:layout_below="@+id/playTitle"
         android:layout_alignRight="@+id/playTitle"
-        android:layout_marginRight="30dp" />
+        android:layout_marginRight="30dp"
+        android:paddingBottom="45dp"/>
 
-    <!-- Type-->
+
+
+<RadioGroup
+
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/radioGroup"
+    android:orientation="horizontal"
+    android:layout_centerVertical="true"
+    android:layout_alignParentBottom= "@id/level"
+    android:layout_alignLeft="@+id/level"
+    android:layout_alignStart="@+id/level"
+    android:layout_below="@+id/level"
+    android:paddingBottom="45sp">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,20 +75,94 @@
         android:id="@+id/type"
         android:textSize = "30sp"
         android:textColor = "#000000"
-        android:layout_below="@+id/level"
         android:layout_alignLeft="@+id/level"
         android:layout_alignStart="@+id/level"
-        android:paddingTop="60dp" />
+        android:layout_below="@+id/level" />
 
-    <!--Begin Game Button-->
+    <!-- Plus Button-->
+    <RadioButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/add"
+        android:background="@drawable/addition"
+        android:button="@null"
+        android:layout_marginLeft = "15dp"/>
+
+    <!-- Subtract Button-->
+    <RadioButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:id="@+id/subtract"
+        android:background="@drawable/subtract"
+        android:button="@null" />
+
+    <!-- Multiply Button-->
+    <RadioButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:id="@+id/multiply"
+        android:background="@drawable/multiply"
+        android:button="@null" />
+
+    <!-- Divide Button-->
+    <RadioButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:id="@+id/divide"
+        android:background="@drawable/divide"
+        android:button="@null" />
+
+
+</RadioGroup>
+
+    <!--User-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user"
+        android:textSize="30sp"
+        android:id="@+id/user"
+        android:textColor="#000000"
+        android:layout_alignLeft="@+id/radioGroup"
+        android:layout_alignStart="@+id/radioGroup"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignRight="@+id/level"
+        android:layout_alignEnd="@+id/level"
+        android:paddingBottom="15dp"/>
+
+    <!-- Boy-->
+    <RadioButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/boy"
+        android:background="@drawable/boy"
+        android:button="@null"
+        android:checked="false"
+        android:layout_marginLeft="125dp"
+        android:layout_alignBottom="@+id/user" />
+
+    <!-- Multiply Button-->
+    <RadioButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/girl"
+        android:background="@drawable/girl"
+        android:button="@null"
+        android:layout_alignBottom="@+id/user"
+        android:layout_alignLeft="@id/boy"
+        android:layout_marginLeft="100dp"/>
+    <!--Start Game Button-->
     <Button
-        android:layout_width="400px"
-        android:layout_height="100px"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:text = "@string/start_game"
         android:textSize="25sp"
         android:background="#ffffff"
         android:id="@+id/start_button"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="85sp"
         android:selectAllOnFocus="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -78,8 +170,8 @@
 
     <!-- Settings Button-->
     <Button
-        android:layout_width="400px"
-        android:layout_height="100px"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:text = "@string/settings"
         android:id="@+id/settings"
         android:background="#ffffff"
@@ -87,7 +179,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/start_button"
         android:layout_alignStart="@+id/start_button"
-        android:layout_marginBottom="6dp" />
+        android:layout_marginBottom="15sp" />
 
 
 
