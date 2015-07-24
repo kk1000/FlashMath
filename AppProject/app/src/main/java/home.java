@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -31,10 +32,16 @@ public class home extends ActionBarActivity{
         TextView myTextView = (TextView) findViewById(R.id.start_button);
         myTextView.setTypeface(myFont);
 
+        ImageButton SettingsButton = (ImageButton) findViewById(R.id.settings);
+        SettingsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Settings(v);
+            }
+        });
 
-        Button button = (Button) findViewById(R.id.start_button);
+        Button StartButton = (Button) findViewById(R.id.start_button);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StartGame(v);
@@ -42,6 +49,9 @@ public class home extends ActionBarActivity{
         });
     }
 
+    public void Settings(View v) {
+        startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.settings.class));
+    }
     public void StartGame(View v) {
             startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.playgame.class));
     }
