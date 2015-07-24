@@ -36,6 +36,7 @@ public class home extends ActionBarActivity{
             @Override
             public void onClick(View v) {
                 // TODO call function easy
+
             }
         });
         myHard.setTypeface(myFont);
@@ -46,7 +47,8 @@ public class home extends ActionBarActivity{
             }
         });
 
-        ImageButton SettingsButton = (ImageButton) findViewById(R.id.settings);
+        Button SettingsButton = (Button) findViewById(R.id.settings);
+        SettingsButton.setTypeface(myFont);
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Settings(v);
@@ -54,7 +56,7 @@ public class home extends ActionBarActivity{
         });
 
         Button StartButton = (Button) findViewById(R.id.start_button);
-
+        StartButton.setTypeface(myFont);
         StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
