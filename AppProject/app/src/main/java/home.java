@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.support.v7.app.ActionBarActivity;
 
@@ -20,11 +21,25 @@ public class home extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.home);
-        //Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
-        //TextView myTextView = (TextView) findViewById(R.id.logo1);
-        //TextView mySlogan = (TextView) findViewById(R.id.slogan);
-        //myTextView.setTypeface(myFont);
-        //mySlogan.setTypeface(myFont);
+        Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+        TextView myLevel = (TextView) findViewById(R.id.level);
+        TextView myEasy = (TextView) findViewById(R.id.easy);
+        TextView myHard = (TextView) findViewById(R.id.hard);
+        myLevel.setTypeface(myFont);
+        myEasy.setTypeface(myFont);
+        myEasy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO call function easy
+            }
+        });
+        myHard.setTypeface(myFont);
+        myHard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO call function hard
+            }
+        });
     }
 
 //    @Override

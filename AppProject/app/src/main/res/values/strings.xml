@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">FlashMath</string>
     <string name="math_is_fun">Math is fun!</string>
+    <string name="level">Level:</string>
+    <string name="easy">Easy</string>
+    <string name="hard">Hard</string>
+    <string name="type">Type</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
