@@ -15,7 +15,7 @@ import android.app.Activity;
 public class splash extends ActionBarActivity {
 
 
-    public static int Splash_Time = 200;
+    public static int Splash_Time = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
