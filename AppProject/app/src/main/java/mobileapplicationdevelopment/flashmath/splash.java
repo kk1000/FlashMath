@@ -2,7 +2,6 @@ package mobileapplicationdevelopment.flashmath;
 
 
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +11,7 @@ import android.os.Handler;
 import android.app.Activity;
 
 
-public class splash extends ActionBarActivity {
+public class splash extends Activity {
 
 
     public static int Splash_Time = 3000;
@@ -20,7 +19,6 @@ public class splash extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.splash);
         Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         TextView myTextView = (TextView) findViewById(R.id.logo1);

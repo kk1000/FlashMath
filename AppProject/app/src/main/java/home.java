@@ -77,17 +77,15 @@ public class home extends Activity{
                 if(checkId == R.id.add) {
                     //I just set this to an X to see if it would work. maybe we should set all the other types to grey when something is clicked?
                     addButton.setBackgroundResource(R.drawable.red_x);
+
                 }
                 else if (checkId == R.id.subtract) {
-                    subtractButton.setWidth(50);
                     addButton.setBackgroundResource(R.drawable.addition);
                 }
                 else if (checkId == R.id.multiply) {
-                    multiplyButton.setWidth(5);
                     addButton.setBackgroundResource(R.drawable.addition);
                 }
                 else {
-                    divideButton.setWidth(5);
                     addButton.setBackgroundResource(R.drawable.addition);
                 }
             }
