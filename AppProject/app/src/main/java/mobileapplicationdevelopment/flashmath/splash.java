@@ -1,6 +1,7 @@
 package mobileapplicationdevelopment.flashmath;
 
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,7 @@ public class splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         TextView myTextView = (TextView) findViewById(R.id.logo1);
         TextView mySlogan = (TextView) findViewById(R.id.slogan);
