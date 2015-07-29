@@ -21,7 +21,12 @@
     <string name="eight" >8</string>
     <string name="nine" >9</string>
     <string name="zero">0</string>
+    <string name="timer">1:00</string>
     <string name="delete">Delete</string>
     <string name="go">GO!</string>
+    <string name="gameover">TIME\'S UP!</string>
+    <string name="won">WON: </string>
+    <string name="play_again">Play Again</string>
+    <string name="back_home">Back to Home</string>
     <string name = "settings_text"> I am the settings Screen</string>
 </resources>
