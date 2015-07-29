@@ -1,6 +1,7 @@
 package mobileapplicationdevelopment.flashmath;
 
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class splash extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.splash);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         TextView myTextView = (TextView) findViewById(R.id.logo1);
         TextView mySlogan = (TextView) findViewById(R.id.slogan);

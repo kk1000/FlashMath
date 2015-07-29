@@ -2,6 +2,7 @@ package mobileapplicationdevelopment.flashmath;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
@@ -27,6 +28,8 @@ public class home extends Activity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.home);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         final TextView myLevel = (TextView) findViewById(R.id.level);
         final TextView myEasy = (TextView) findViewById(R.id.easy);
