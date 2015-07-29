@@ -76,23 +76,51 @@ public class home extends Activity{
             public void onCheckedChanged(RadioGroup group, int checkId) {
                 if(checkId == R.id.add) {
                     //I just set this to an X to see if it would work. maybe we should set all the other types to grey when something is clicked?
-                    addButton.setBackgroundResource(R.drawable.red_x);
+                    addButton.setBackgroundResource(R.drawable.addition_pressed);
+                    subtractButton.setBackgroundResource(R.drawable.subtract);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    divideButton.setBackgroundResource(R.drawable.divide);
                 }
                 else if (checkId == R.id.subtract) {
-                    subtractButton.setWidth(50);
                     addButton.setBackgroundResource(R.drawable.addition);
+                    subtractButton.setBackgroundResource(R.drawable.subtract_pressed);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    divideButton.setBackgroundResource(R.drawable.divide);
                 }
                 else if (checkId == R.id.multiply) {
-                    multiplyButton.setWidth(5);
                     addButton.setBackgroundResource(R.drawable.addition);
+                    subtractButton.setBackgroundResource(R.drawable.subtract);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply_pressed);
+                    divideButton.setBackgroundResource(R.drawable.divide);
                 }
                 else {
-                    divideButton.setWidth(5);
                     addButton.setBackgroundResource(R.drawable.addition);
+                    subtractButton.setBackgroundResource(R.drawable.subtract);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    divideButton.setBackgroundResource(R.drawable.divide_pressed);
                 }
             }
         });
 
+        final RadioGroup userGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
+        final RadioButton boyButton = (RadioButton) findViewById(R.id.boy);
+        final RadioButton girlButton = (RadioButton) findViewById(R.id.girl);
+
+        userGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+
+            public void onCheckedChanged(RadioGroup group, int checkId) {
+                if(checkId == R.id.boy) {
+                    //I just set this to an X to see if it would work. maybe we should set all the other types to grey when something is clicked?
+                    boyButton.setBackgroundResource(R.drawable.boy_pressed);
+                    girlButton.setBackgroundResource(R.drawable.girl);
+                }
+                else if (checkId == R.id.girl) {
+                    boyButton.setBackgroundResource(R.drawable.boy);
+                    girlButton.setBackgroundResource(R.drawable.girl_pressed);
+                }
+            }
+        });
 
         final Button SettingsButton = (Button) findViewById(R.id.settings);
         SettingsButton.setTypeface(myFont);
