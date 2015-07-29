@@ -78,7 +78,7 @@ public class home extends Activity{
 
             public void onCheckedChanged(RadioGroup group, int checkId) {
                 if(checkId == R.id.add) {
-                    //I just set this to an X to see if it would work. maybe we should set all the other types to grey when something is clicked?
+
                     addButton.setBackgroundResource(R.drawable.addition_pressed);
                     subtractButton.setBackgroundResource(R.drawable.subtract);
                     multiplyButton.setBackgroundResource(R.drawable.multiply);
@@ -114,7 +114,6 @@ public class home extends Activity{
 
             public void onCheckedChanged(RadioGroup group, int checkId) {
                 if(checkId == R.id.boy) {
-                    //I just set this to an X to see if it would work. maybe we should set all the other types to grey when something is clicked?
                     boyButton.setBackgroundResource(R.drawable.boy_pressed);
                     girlButton.setBackgroundResource(R.drawable.girl);
                 }
