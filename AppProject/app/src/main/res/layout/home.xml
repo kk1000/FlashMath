@@ -172,7 +172,7 @@
 
     <RelativeLayout
         android:layout_width="300dp"
-        android:layout_height="110dp"
+        android:layout_height="135dp"
         android:gravity="center_horizontal"
         android:id="@+id/failToStart"
         android:visibility="gone"
@@ -186,9 +186,11 @@
             android:id="@+id/needToSelect"
             android:textSize="30sp"
             android:textColor="#000000"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:text="@string/needToSelect"
-            android:background="@drawable/gameoverborder"/>
+            android:background="@drawable/gameoverborder"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -213,10 +215,10 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:text = "@string/start_game"
-        android:textSize="40sp"
-        android:background="#ffffff"
+        android:background="@drawable/start_button"
+        android:textSize="35sp"
         android:id="@+id/start_button"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="125dp"
         android:selectAllOnFocus="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -233,6 +235,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/start_button"
         android:layout_alignStart="@+id/start_button"
-        android:layout_marginBottom="15sp" />
+        android:layout_marginBottom="40sp" />
 
 </RelativeLayout>

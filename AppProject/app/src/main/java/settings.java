@@ -29,6 +29,7 @@ public class settings extends Activity{
         final Button cashButton = (Button) findViewById(R.id.cash);
         saveButton.setTypeface(myFont);
         cashButton.setTypeface(myFont);
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
