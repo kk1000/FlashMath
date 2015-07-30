@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.widget.Button;
 import android.os.CountDownTimer;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -52,6 +53,11 @@ public class playgame extends Activity{
 
         final Button PlayAgain = (Button) findViewById(R.id.play_again);
         PlayAgain.setTypeface(myFont);
+
+        final FrameLayout green_check = (FrameLayout) findViewById(R.id.green_check);
+
+        final FrameLayout red_x = (FrameLayout) findViewById(R.id.red_x);
+
 
 
         final Button one = (Button) findViewById(R.id.one);
@@ -170,37 +176,55 @@ public class playgame extends Activity{
             }
         });
 
+        final CountDownTimer popUp = new CountDownTimer(1500,1000) {
+            public void onTick(long sec){
+
+            }
+            public void onFinish() {
+                red_x.setVisibility(View.GONE);
+                green_check.setVisibility(View.GONE);
+            }
+        };
+
 
         final CountDownTimer timer = new CountDownTimer(60000,1000) {
             Boolean newProblem = true;
 
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
-                int CorrectAnswer = 1;
+                final TextView CorrectAnswer = (TextView) findViewById(R.id.correctanswer);
 
                 if(newProblem == true) {
                     int min = 0, max = 10;
                     int num1 = getRandomNumber(min, max);
                     int num2 = getRandomNumber(min, max);
-                    CorrectAnswer = num1 + num2;
+                    CorrectAnswer.setText((num1 + num2)+"");
                     currentProblem.setText(num1 + " " + "+" + " " + num2);
                     newProblem = false;
                 }
 
-                final int finalCorrectAnswer = CorrectAnswer;
+
                 go.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(finalCorrectAnswer == getAnswer(answer)) {
+                        //if user has correct answer
+                        if(Integer.parseInt(CorrectAnswer.getText().toString()) == getAnswer(answer)) {
                             answer.setText("");
                             newProblem = true;
+                            green_check.setVisibility(View.VISIBLE);
+                            popUp.start();
+
+                        }
+                        else {
+                            red_x.setVisibility(View.VISIBLE);
+                            popUp.start();
                         }
                     }
                 });
 
             }
-            public void onFinish() {
 
+            public void onFinish() {
                 gameOver(gameover, BackHome, PlayAgain, currentProblem, answer);
                 myTimer.setText(":0");
             }
@@ -231,6 +255,7 @@ public class playgame extends Activity{
         gameover.setVisibility(View.GONE);
         currentProblem.setVisibility(View.VISIBLE);
         answer.setVisibility(View.VISIBLE);
+        answer.setText("");
         timer.start();
 
     }
