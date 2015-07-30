@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.util.TypedValue;
 import android.widget.Button;
 import android.os.CountDownTimer;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -30,9 +31,10 @@ public class playgame extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playgame);
         final RelativeLayout gameover = (RelativeLayout) findViewById(R.id.gameover);
-
-
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+        final EditText answer = (EditText) findViewById(R.id.answer);
+        answer.setTypeface(myFont);
+
         final TextView myTimer = (TextView) findViewById(R.id.timer);
         myTimer.setTypeface(myFont);
 
@@ -52,32 +54,111 @@ public class playgame extends Activity{
         PlayAgain.setTypeface(myFont);
 
 
-
-
-
         final Button one = (Button) findViewById(R.id.one);
         one.setTypeface(myFont);
+        one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("1");
+            }
+        });
+
 
         final Button two = (Button) findViewById(R.id.two);
         two.setTypeface(myFont);
+        two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("2");
+            }
+        });
+
         final Button three = (Button) findViewById(R.id.three);
         three.setTypeface(myFont);
+        three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("3");
+            }
+        });
+
         final Button four = (Button) findViewById(R.id.four);
         four.setTypeface(myFont);
+        four.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("4");
+            }
+        });
+
         final Button five = (Button) findViewById(R.id.five);
         five.setTypeface(myFont);
+        five.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("5");
+            }
+        });
+
         final Button six = (Button) findViewById(R.id.six);
         six.setTypeface(myFont);
+        six.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("6");
+            }
+        });
+
         final Button seven = (Button) findViewById(R.id.seven);
         seven.setTypeface(myFont);
+        seven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("7");
+            }
+        });
+
         final Button eight = (Button) findViewById(R.id.eight);
         eight.setTypeface(myFont);
+        eight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("8");
+            }
+        });
+
         final Button nine = (Button) findViewById(R.id.nine);
         nine.setTypeface(myFont);
+        nine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("9");
+            }
+        });
+
         final Button delete = (Button) findViewById(R.id.delete);
         delete.setTypeface(myFont);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String currentText = answer.getText().toString();
+                int length = currentText.length();
+                if (length != 0) {
+                    answer.setText(currentText.substring(0, length - 1));
+                    answer.setSelection(length - 1);
+                }
+            }
+        });
+
         final Button zero = (Button) findViewById(R.id.zero);
         zero.setTypeface(myFont);
+        zero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.append("0");
+            }
+        });
+
         final Button go = (Button) findViewById(R.id.go);
         go.setTypeface(myFont);
 
@@ -94,20 +175,22 @@ public class playgame extends Activity{
             Boolean newProblem = true;
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
-
-                if(secRemaining % 7 == 0) newProblem = true;
-                else newProblem = false;
-                if(newProblem == true) {
-                    int min = 0, max = 10;
-                    int num1 = getRandomNumber(min, max);
-                    int num2 = getRandomNumber(min, max);
-                    currentProblem.setText(num1 + " " + "+" + " " + num2);
-                }
+                int answer = getAnswer();
+                go.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int number = -1;
+                        if(Integer.parseInt(answer.getText().toString()) == number) {
+                            answer.setText("");
+                            newProblem = true;
+                        }
+                    }
+                });
 
             }
             public void onFinish() {
 
-                gameOver(gameover, BackHome, PlayAgain, currentProblem);
+                gameOver(gameover, BackHome, PlayAgain, currentProblem, answer);
                 myTimer.setText(":0");
             }
         };
@@ -115,25 +198,28 @@ public class playgame extends Activity{
         PlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RestartGame(gameover, timer, currentProblem);
+                RestartGame(gameover, timer, currentProblem, answer);
             }
         });
 
 
 
         timer.start();
-
-
     }
 
-    public void gameOver(final RelativeLayout gameover, Button BackHome, Button PlayAgain, TextView currentProblem){
+
+
+    public void gameOver(final RelativeLayout gameover, Button BackHome, Button PlayAgain, TextView currentProblem, EditText answer){
         currentProblem.setVisibility(View.GONE);
         gameover.setVisibility(View.VISIBLE);
+        answer.setVisibility(View.GONE);
+
     }
 
-    public void RestartGame(RelativeLayout gameover, CountDownTimer timer, TextView currentProblem){
+    public void RestartGame(RelativeLayout gameover, CountDownTimer timer, TextView currentProblem, EditText answer){
         gameover.setVisibility(View.GONE);
         currentProblem.setVisibility(View.VISIBLE);
+        answer.setVisibility(View.VISIBLE);
         timer.start();
 
     }
@@ -141,6 +227,10 @@ public class playgame extends Activity{
     public int getRandomNumber(int min, int max) {
         Random rand = new Random();
         return rand.nextInt((max - min) + 1) + min;
+    }
+
+    public int getAnswer(EditText answer){
+        return Integer.parseInt(answer.getText().toString());
     }
 
 }

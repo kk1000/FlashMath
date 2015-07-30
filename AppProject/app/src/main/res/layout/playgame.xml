@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:orientation="horizontal"
-
         android:id="@+id/gridLayout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -186,5 +185,21 @@
         android:layout_below="@+id/timer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp" />
+
+    <!-- answer-->
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:inputType="numberDecimal"
+        android:focusable="false"
+        android:ems="10"
+        android:textSize="50sp"
+        android:background="@drawable/gameoverborder"
+        android:id="@+id/answer"
+        android:layout_above="@+id/gridLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
