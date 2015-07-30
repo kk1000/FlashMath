@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup.*;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.app.Activity;
 
@@ -21,6 +22,11 @@ import mobileapplicationdevelopment.flashmath.R;
  * Created by nikolaschaconas on 7/17/15.
  */
 public class home extends Activity{
+
+    private boolean levelClicked = false;
+    private boolean difficultyClicked = false;
+    private boolean userClicked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         boolean easy = false, hard = false;
@@ -52,9 +58,11 @@ public class home extends Activity{
                 if (checkId == R.id.easy) {
                     easyButton.setBackgroundResource(R.drawable.easy_pressed);
                     hardButton.setBackgroundResource(R.drawable.hard);
+                    levelClicked = true;
                 } else if (checkId == R.id.hard) {
                     easyButton.setBackgroundResource(R.drawable.easy);
                     hardButton.setBackgroundResource(R.drawable.hard_pressed);
+                    levelClicked = true;
                 }
             }
         });
@@ -70,29 +78,32 @@ public class home extends Activity{
 
             public void onCheckedChanged(RadioGroup group, int checkId) {
                 if(checkId == R.id.add) {
-
                     addButton.setBackgroundResource(R.drawable.addition_pressed);
                     subtractButton.setBackgroundResource(R.drawable.subtract);
                     multiplyButton.setBackgroundResource(R.drawable.multiply);
                     divideButton.setBackgroundResource(R.drawable.divide);
+                    difficultyClicked = true;
                 }
                 else if (checkId == R.id.subtract) {
                     addButton.setBackgroundResource(R.drawable.addition);
                     subtractButton.setBackgroundResource(R.drawable.subtract_pressed);
                     multiplyButton.setBackgroundResource(R.drawable.multiply);
                     divideButton.setBackgroundResource(R.drawable.divide);
+                    difficultyClicked = true;
                 }
                 else if (checkId == R.id.multiply) {
                     addButton.setBackgroundResource(R.drawable.addition);
                     subtractButton.setBackgroundResource(R.drawable.subtract);
                     multiplyButton.setBackgroundResource(R.drawable.multiply_pressed);
                     divideButton.setBackgroundResource(R.drawable.divide);
+                    difficultyClicked = true;
                 }
                 else {
                     addButton.setBackgroundResource(R.drawable.addition);
                     subtractButton.setBackgroundResource(R.drawable.subtract);
                     multiplyButton.setBackgroundResource(R.drawable.multiply);
                     divideButton.setBackgroundResource(R.drawable.divide_pressed);
+                    difficultyClicked = true;
                 }
             }
         });
@@ -106,13 +117,14 @@ public class home extends Activity{
 
 
             public void onCheckedChanged(RadioGroup group, int checkId) {
-                if(checkId == R.id.boy) {
+                if (checkId == R.id.boy) {
                     boyButton.setBackgroundResource(R.drawable.boy_pressed);
                     girlButton.setBackgroundResource(R.drawable.girl);
-                }
-                else if (checkId == R.id.girl) {
+                    userClicked = true;
+                } else if (checkId == R.id.girl) {
                     boyButton.setBackgroundResource(R.drawable.boy);
                     girlButton.setBackgroundResource(R.drawable.girl_pressed);
+                    userClicked = true;
                 }
             }
         });
@@ -125,12 +137,30 @@ public class home extends Activity{
             }
         });
 
+        final TextView needToSelectText = (TextView) findViewById(R.id.needToSelect);
+        needToSelectText.setTypeface(myFont);
+        final Button okButton = (Button) findViewById(R.id.ok);
+        okButton.setTypeface(myFont);
+        final RelativeLayout failStart = (RelativeLayout) findViewById(R.id.failToStart);
+
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                failStart.setVisibility(View.GONE);
+            }
+        });
+
         final Button StartButton = (Button) findViewById(R.id.start_button);
         StartButton.setTypeface(myFont);
         StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StartGame(v);
+                if (levelClicked && difficultyClicked && userClicked) {
+                    StartGame(v);
+                }
+                else {
+                    failStart.setVisibility(View.VISIBLE);
+                }
             }
         });
 

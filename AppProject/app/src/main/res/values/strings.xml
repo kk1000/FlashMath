@@ -32,4 +32,6 @@
     <string name ="settings_text"> I am the settings Screen</string>
     <string name="save">Save</string>
     <string name="cash">Cash In!</string>
+    <string name="needToSelect">Select Level, Type, and User to Start Game!</string>
+    <string name="ok">OK</string>
 </resources>
