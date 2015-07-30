@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.os.CountDownTimer;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -35,6 +36,8 @@ public class playgame extends Activity{
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         final EditText answer = (EditText) findViewById(R.id.answer);
         answer.setTypeface(myFont);
+
+        final ProgressBar progressbar = (ProgressBar) findViewById(R.id.progressbar);
 
         final TextView myTimer = (TextView) findViewById(R.id.timer);
         myTimer.setTypeface(myFont);
@@ -176,7 +179,7 @@ public class playgame extends Activity{
             }
         });
 
-        final CountDownTimer popUp = new CountDownTimer(1500,1000) {
+        final CountDownTimer popUp = new CountDownTimer(1005,1000) {
             public void onTick(long sec){
 
             }
@@ -213,9 +216,10 @@ public class playgame extends Activity{
                             newProblem = true;
                             green_check.setVisibility(View.VISIBLE);
                             popUp.start();
-
                         }
+
                         else {
+                            answer.setText("");
                             red_x.setVisibility(View.VISIBLE);
                             popUp.start();
                         }
@@ -257,7 +261,6 @@ public class playgame extends Activity{
         answer.setVisibility(View.VISIBLE);
         answer.setText("");
         timer.start();
-
     }
 
     public int getRandomNumber(int min, int max) {
