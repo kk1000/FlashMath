@@ -25,9 +25,11 @@ public class settings extends Activity{
 
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
 
-        final Button okButton = (Button) findViewById(R.id.ok);
-        okButton.setTypeface(myFont);
-        okButton.setOnClickListener(new View.OnClickListener() {
+        final Button saveButton = (Button) findViewById(R.id.save);
+        final Button cashButton = (Button) findViewById(R.id.cash);
+        saveButton.setTypeface(myFont);
+        cashButton.setTypeface(myFont);
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BackToHome(v);
