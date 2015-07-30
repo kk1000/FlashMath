@@ -30,88 +30,110 @@
         <Button
             android:id="@+id/one"
             android:text="@string/one"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//two-->
         <Button
             android:id="@+id/two"
             android:text="@string/two"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//three-->
         <Button
             android:id="@+id/three"
             android:text="@string/three"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//four-->
         <Button
             android:id="@+id/four"
             android:text="@string/four"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//five-->
         <Button
             android:id="@+id/five"
             android:text="@string/five"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//six-->
         <Button
             android:id="@+id/six"
             android:text="@string/six"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//seven-->
         <Button
             android:id="@+id/seven"
             android:text="@string/seven"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//eight-->
         <Button
             android:id="@+id/eight"
             android:text="@string/eight"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!--//nine-->
         <Button
             android:id="@+id/nine"
             android:text="@string/nine"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
         <!-- delete-->
         <Button
             android:id="@+id/delete"
             android:text="@string/delete"
-            android:background = "#cc0000"
-            android:layout_width="125dp"
-            android:layout_height="50dp" />
+            android:background="@drawable/deleteborder"
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="30sp"/>
 
         <!-- zero-->
         <Button
             android:id="@+id/zero"
             android:text="@string/zero"
-            android:layout_height="50dp"
-            android:layout_width="125dp"/>
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="35sp"
+            android:background="@drawable/numberpadborder"/>
 
 
         <!-- go-->
         <Button
             android:id="@+id/go"
             android:text="@string/go"
-            android:background="#008000"
-            android:layout_width="125dp"
-            android:layout_height="50dp" />
+            android:background="@drawable/goborder"
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textSize="30sp"/>
 
     </GridLayout>
 
@@ -162,14 +184,16 @@
                 android:layout_height="wrap_content"
                 android:text = "@string/play_again"
                 android:id="@+id/play_again"
-                android:layout_weight="0.63" />
+                android:layout_weight="0.63"
+                android:textSize="20sp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text = "@string/back_home"
                 android:id="@+id/back_home"
-                android:layout_weight="0.21" />
+                android:layout_weight="0.21"
+                android:textSize="20sp"/>
         </LinearLayout>
 
 
@@ -200,7 +224,8 @@
         android:maxLength="3"
         android:layout_above="@+id/gridLayout"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"/>
 
     <!-- Check -->
     <FrameLayout
