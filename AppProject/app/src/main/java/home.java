@@ -30,6 +30,7 @@ public class home extends Activity{
         setContentView(R.layout.home);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
 
+        //setting font for page
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         final TextView myLevel = (TextView) findViewById(R.id.level);
         final TextView myEasy = (TextView) findViewById(R.id.easy);
@@ -40,33 +41,25 @@ public class home extends Activity{
         myType.setTypeface(myFont);
         myLevel.setTypeface(myFont);
 
+        //selecting easy or hard
+        final RadioGroup levelGroup = (RadioGroup) findViewById(R.id.radioGroupLevel);
+        final RadioButton easyButton = (RadioButton) findViewById(R.id.easy);
+        final RadioButton hardButton = (RadioButton) findViewById(R.id.hard);
 
-        //Easy Button
-        myEasy.setTypeface(myFont);
-        myEasy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-                myHard.setTypeface(myFont,Typeface.NORMAL);
-                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
-                myEasy.setTypeface(myFont,Typeface.BOLD);
+        levelGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
+            public void onCheckedChanged(RadioGroup group, int checkId) {
+                if (checkId == R.id.easy) {
+                    easyButton.setBackgroundResource(R.drawable.easy_pressed);
+                    hardButton.setBackgroundResource(R.drawable.hard);
+                } else if (checkId == R.id.hard) {
+                    easyButton.setBackgroundResource(R.drawable.easy);
+                    hardButton.setBackgroundResource(R.drawable.hard_pressed);
+                }
             }
         });
 
-        //Hard Button
-        myHard.setTypeface(myFont);
-        myHard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-                myEasy.setTypeface(myFont, Typeface.NORMAL);
-                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
-                myHard.setTypeface(myFont,Typeface.BOLD);
-            }
-        });
-
-
+        //type of math group
         final RadioGroup difficultyGroup = (RadioGroup) findViewById(R.id.radioGroup);
         final RadioButton addButton = (RadioButton) findViewById(R.id.add);
         final RadioButton subtractButton = (RadioButton) findViewById(R.id.subtract);
@@ -74,7 +67,6 @@ public class home extends Activity{
         final RadioButton divideButton = (RadioButton) findViewById(R.id.divide);
 
         difficultyGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
 
             public void onCheckedChanged(RadioGroup group, int checkId) {
                 if(checkId == R.id.add) {
@@ -105,6 +97,7 @@ public class home extends Activity{
             }
         });
 
+        //clicking boy or girl user
         final RadioGroup userGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
         final RadioButton boyButton = (RadioButton) findViewById(R.id.boy);
         final RadioButton girlButton = (RadioButton) findViewById(R.id.girl);
