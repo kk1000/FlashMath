@@ -10,7 +10,7 @@
         android:layout_height="70dp"
         android:textSize="40sp"
         android:textColor="#000000"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="6dp"
         android:id="@+id/timer"
         android:text="@string/timer"/>
 
@@ -136,19 +136,53 @@
             android:gravity="center_horizontal"
             android:text="@string/gameover" />
 
-        <TextView
-            android:layout_width="fill_parent"
+
+        <!-- won layout-->
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/won"
+            android:orientation = "horizontal"
             android:background="@drawable/gameoverborder"
-            android:textSize="50sp"
-            android:textColor="#000000"
-            android:gravity = "center"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/timesuptext"
-            android:id="@+id/won"
-            android:layout_above="@+id/linearLayout" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+            <!--won text-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/won"
+
+                android:textSize="50sp"
+                android:textColor="#000000"
+                android:layout_centerVertical="true"
+                android:gravity = "center"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/timesuptext"
+                android:id="@+id/won"
+                android:layout_above="@+id/linearLayout" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/star"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/won"
+                android:layout_toEndOf="@+id/won"
+                android:id="@+id/imageView2" />
+            <!-- apostraphe s-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "\'s"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:id="@+id/apostraphe"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView2" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:orientation="horizontal"
@@ -180,6 +214,7 @@
         android:layout_height="wrap_content"
         android:textSize="75sp"
         android:text="GO!"
+        android:visibility="visible"
         android:id="@+id/problem"
         android:textColor="#000000"
         android:layout_below="@+id/timer"
@@ -235,15 +270,35 @@
         android:id="@+id/correctanswer"
         android:visibility="gone"/>
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
+    <!-- star and text in corner-->
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressbar"
-        android:layout_alignBottom="@+id/timer"
-        android:layout_alignLeft="@+id/problem"
-        android:layout_alignStart="@+id/problem"
-        android:layout_alignRight="@+id/answer"
-        android:layout_alignEnd="@+id/answer" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/starphoto"
+            android:src="@drawable/star"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/startext"
+            android:text="x0"
+            android:gravity="center_vertical"
+            android:textSize="45sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/starphoto"
+            android:layout_toEndOf="@+id/starphoto" />
+    </RelativeLayout>
 
 </RelativeLayout>

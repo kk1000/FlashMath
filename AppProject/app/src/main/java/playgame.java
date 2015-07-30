@@ -27,6 +27,8 @@ import java.util.Random;
 import mobileapplicationdevelopment.flashmath.R;
 
 public class playgame extends Activity{
+    private int starCount = 0;
+    public int getStarCount(){return starCount;}
     protected void onCreate(Bundle savedInstanceState) {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
@@ -37,7 +39,11 @@ public class playgame extends Activity{
         final EditText answer = (EditText) findViewById(R.id.answer);
         answer.setTypeface(myFont);
 
-        final ProgressBar progressbar = (ProgressBar) findViewById(R.id.progressbar);
+        final TextView apostraphes = (TextView)findViewById(R.id.apostraphe);
+        apostraphes.setTypeface(myFont);
+
+        final TextView starText = (TextView) findViewById(R.id.startext);
+        starText.setTypeface(myFont);
 
         final TextView myTimer = (TextView) findViewById(R.id.timer);
         myTimer.setTypeface(myFont);
@@ -201,8 +207,8 @@ public class playgame extends Activity{
                     int min = 0, max = 10;
                     int num1 = getRandomNumber(min, max);
                     int num2 = getRandomNumber(min, max);
-                    CorrectAnswer.setText((num1 + num2)+"");
-                    currentProblem.setText(num1 + " " + "+" + " " + num2);
+                    CorrectAnswer.setText((num1 * num2)+"");
+                    currentProblem.setText(num1 + " " + "*" + " " + num2);
                     newProblem = false;
                 }
 
@@ -216,6 +222,7 @@ public class playgame extends Activity{
                             newProblem = true;
                             green_check.setVisibility(View.VISIBLE);
                             popUp.start();
+                            starText.setText("x" + ++starCount);
                         }
 
                         else {
@@ -231,6 +238,12 @@ public class playgame extends Activity{
             public void onFinish() {
                 gameOver(gameover, BackHome, PlayAgain, currentProblem, answer);
                 myTimer.setText(":0");
+                if(starCount != 1) {
+                    won.setText("WON: " + starCount);
+                    apostraphes.setVisibility(View.VISIBLE);
+                }
+                else
+                    won.setText("WON: " + starCount);
             }
         };
 
