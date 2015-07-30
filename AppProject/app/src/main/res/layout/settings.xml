@@ -14,15 +14,14 @@
         android:id="@+id/playTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="15dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/radioUsers"
         android:orientation="horizontal"
-        android:paddingBottom="50dp"
-        android:layout_above="@+id/target"
+        android:layout_below="@+id/playTitle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -58,10 +57,10 @@
         android:layout_height="70dp"
         android:src="@drawable/target"
         android:id="@+id/target"
-        android:layout_alignBottom="@+id/targetText"
+        android:layout_below="@+id/radioUsers"
+        android:layout_marginLeft="15dp"
         android:layout_alignLeft="@+id/playTitle"
-        android:layout_alignStart="@+id/playTitle"
-        android:layout_marginLeft="20dp"/>
+        android:layout_alignStart="@+id/playTitle" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -70,22 +69,21 @@
         android:ems="6"
         android:textSize="30sp"
         android:id="@+id/targetText"
-        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignBottom="@+id/target"
         android:layout_alignRight="@+id/playTitle"
-        android:layout_alignEnd="@+id/playTitle"
-        android:layout_marginRight="22dp"/>
-
+        android:layout_alignEnd="@+id/playTitle" />
 
     <!-- Reward field -->
+
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/reward"
         android:id="@+id/reward"
-        android:layout_below="@+id/target"
-        android:layout_alignRight="@+id/target"
-        android:layout_alignEnd="@+id/target"
-        android:layout_marginLeft="20dp"/>
+        android:layout_below="@+id/targetText"
+        android:layout_alignLeft="@+id/target"
+        android:layout_alignStart="@+id/target" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -98,8 +96,7 @@
         android:layout_alignLeft="@+id/targetText"
         android:layout_alignStart="@+id/targetText" />
 
-
-    <!-- Current stats field -->
+    <!-- Stats field -->
 
     <ImageView
         android:layout_width="70dp"
@@ -107,8 +104,8 @@
         android:src="@drawable/stats"
         android:id="@+id/stats"
         android:layout_below="@+id/reward"
-        android:layout_alignRight="@+id/reward"
-        android:layout_alignEnd="@+id/reward" />
+        android:layout_alignLeft="@+id/reward"
+        android:layout_alignStart="@+id/reward" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -116,39 +113,36 @@
         android:inputType="number"
         android:ems="6"
         android:textSize="30sp"
-        android:id="@+id/statsText"
+        android:id="@+id/statText"
         android:layout_alignBottom="@+id/stats"
         android:layout_alignLeft="@+id/rewardText"
         android:layout_alignStart="@+id/rewardText" />
 
-    <!-- Save button -->
-
+    <!--Save Game Button-->
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:text = "@string/save"
+        android:textSize="35dp"
+        android:background="#ffffff"
         android:id="@+id/save"
-        android:textSize="25sp"
-        android:background="#ffffff"
+        android:layout_marginBottom="85dp"
+        android:selectAllOnFocus="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/stats"
-        android:layout_alignStart="@+id/stats"
-        android:layout_marginBottom="15dp"/>
+        android:layout_centerHorizontal="true"
+        />
 
-    <!-- Cash in button -->
-
+    <!-- Cash In Button-->
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:text="@string/cash"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
         android:id="@+id/cash"
-        android:textSize="25sp"
-        android:background="#ffffff"
-        android:layout_alignTop="@+id/save"
-        android:layout_alignRight="@+id/statsText"
-        android:layout_alignEnd="@+id/statsText" />
-
+        android:background="@drawable/cash_button"
+        android:textSize="35sp"
+        android:text= "@string/cash"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/save"
+        android:layout_alignStart="@+id/save"
+        android:layout_marginBottom="20sp" />
 
 </RelativeLayout>
