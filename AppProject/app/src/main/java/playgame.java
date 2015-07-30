@@ -238,7 +238,7 @@ public class playgame extends Activity{
             }
 
             public void onFinish() {
-                gameOver(gameover, currentProblem, answer);
+                gameOver(gameover, currentProblem, answer, go);
                 myTimer.setText(":0");
                 if(starCount != 1) {
                     won.setText("WON: " + starCount + " ");
@@ -255,7 +255,7 @@ public class playgame extends Activity{
         PlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RestartGame(gameover, timer, currentProblem, answer);
+                RestartGame(gameover, timer, currentProblem, answer, go);
                 starText.setText("x" + starCount);
             }
         });
@@ -267,19 +267,20 @@ public class playgame extends Activity{
 
 
 
-    public void gameOver(final RelativeLayout gameover, TextView currentProblem, EditText answer){
+    public void gameOver(final RelativeLayout gameover, TextView currentProblem, EditText answer, Button go){
         currentProblem.setVisibility(View.GONE);
         gameover.setVisibility(View.VISIBLE);
         answer.setVisibility(View.GONE);
-
+        go.setEnabled(false);
     }
 
-    public void RestartGame(RelativeLayout gameover, CountDownTimer timer, TextView currentProblem, EditText answer){
+    public void RestartGame(RelativeLayout gameover, CountDownTimer timer, TextView currentProblem, EditText answer, Button go){
         gameover.setVisibility(View.GONE);
         currentProblem.setVisibility(View.VISIBLE);
         answer.setVisibility(View.VISIBLE);
         answer.setText("");
         timer.start();
+        go.setEnabled(true);
     }
 
     public int getRandomNumber(int min, int max) {
