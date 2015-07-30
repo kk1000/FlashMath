@@ -13,17 +13,15 @@
         android:src="@drawable/title"
         android:id="@+id/playTitle"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <RadioGroup
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/radioUsers"
         android:orientation="horizontal"
-        android:paddingBottom="50sp"
-        android:layout_above="@+id/goal"
+        android:layout_below="@+id/playTitle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -35,8 +33,8 @@
             android:background="@drawable/boy"
             android:button="@null"
             android:checked="false"
-            android:layout_marginLeft="90dp"
-            android:layout_alignBottom="@+id/playTitle" />
+            android:layout_alignBottom="@+id/playTitle"
+            android:layout_marginLeft="90dp"/>
 
         <!-- Girl -->
         <RadioButton
@@ -51,15 +49,18 @@
 
     </RadioGroup>
 
-    <!-- Goal field -->
+    <!-- Target field -->
+
+
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/red_x"
-        android:id="@+id/goal"
-        android:layout_alignBottom="@+id/goalText"
-        android:layout_toLeftOf="@+id/goalText"
-        android:layout_toStartOf="@+id/goalText" />
+        android:src="@drawable/target"
+        android:id="@+id/target"
+        android:layout_below="@+id/radioUsers"
+        android:layout_marginLeft="15dp"
+        android:layout_alignLeft="@+id/playTitle"
+        android:layout_alignStart="@+id/playTitle" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -67,21 +68,44 @@
         android:inputType="number"
         android:ems="6"
         android:textSize="30sp"
-        android:id="@+id/goalText"
-        android:layout_centerVertical="true"
+        android:id="@+id/targetText"
+        android:layout_marginRight="20dp"
+        android:layout_alignBottom="@+id/target"
         android:layout_alignRight="@+id/playTitle"
         android:layout_alignEnd="@+id/playTitle" />
 
-
     <!-- Reward field -->
+
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/red_x"
-        android:id="@+id/imageView2"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_toLeftOf="@+id/editText"
-        android:layout_toStartOf="@+id/editText" />
+        android:src="@drawable/reward"
+        android:id="@+id/reward"
+        android:layout_below="@+id/targetText"
+        android:layout_alignLeft="@+id/target"
+        android:layout_alignStart="@+id/target" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="6"
+        android:textSize="30sp"
+        android:id="@+id/rewardText"
+        android:layout_alignBottom="@+id/reward"
+        android:layout_alignLeft="@+id/targetText"
+        android:layout_alignStart="@+id/targetText" />
+
+    <!-- Stats field -->
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/stats"
+        android:id="@+id/stats"
+        android:layout_below="@+id/reward"
+        android:layout_alignLeft="@+id/reward"
+        android:layout_alignStart="@+id/reward" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -89,63 +113,36 @@
         android:inputType="number"
         android:ems="6"
         android:textSize="30sp"
-        android:id="@+id/editText"
-        android:layout_below="@+id/goal"
-        android:layout_alignLeft="@+id/goalText"
-        android:layout_alignStart="@+id/goalText" />
+        android:id="@+id/statText"
+        android:layout_alignBottom="@+id/stats"
+        android:layout_alignLeft="@+id/rewardText"
+        android:layout_alignStart="@+id/rewardText" />
 
-
-    <!-- Current stats field -->
-
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/red_x"
-        android:id="@+id/imageView3"
-        android:layout_below="@+id/editText"
-        android:layout_toLeftOf="@+id/editText2"
-        android:layout_toStartOf="@+id/editText2" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="6"
-        android:textSize="30sp"
-        android:id="@+id/editText2"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
-
-    <!-- Ok button -->
-
+    <!--Save Game Button-->
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:text = "@string/save"
+        android:textSize="35dp"
+        android:background="#ffffff"
         android:id="@+id/save"
-        android:textSize="25sp"
-        android:background="#ffffff"
-        android:layout_below="@+id/imageView3"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_marginRight="65dp"
-        android:layout_marginEnd="65dp" />
+        android:layout_marginBottom="85dp"
+        android:selectAllOnFocus="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
 
-    <!-- Cash in button -->
-
+    <!-- Cash In Button-->
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cash"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
         android:id="@+id/cash"
-        android:textSize="25sp"
-        android:background="#ffffff"
-        android:layout_alignTop="@+id/save"
-        android:layout_alignLeft="@+id/imageView3"
-        android:layout_alignStart="@+id/imageView3" />
-
+        android:background="@drawable/cash_button"
+        android:textSize="35sp"
+        android:text= "@string/cash"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/save"
+        android:layout_alignStart="@+id/save"
+        android:layout_marginBottom="20sp" />
 
 </RelativeLayout>

@@ -34,4 +34,6 @@
     <string name="cash">Cash In!</string>
     <string name="correcttext">Correct!</string>
     <string name="incorrecttext">Sorry, Incorrect!</string>
+    <string name="needToSelect">Select Level, Type, and User to Start Game!</string>
+    <string name="ok">OK</string>
 </resources>
