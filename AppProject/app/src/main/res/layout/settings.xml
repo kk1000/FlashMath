@@ -126,7 +126,7 @@
         android:textSize="35dp"
         android:background="#ffffff"
         android:id="@+id/save"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="110dp"
         android:selectAllOnFocus="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -143,6 +143,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/save"
         android:layout_alignStart="@+id/save"
-        android:layout_marginBottom="20sp" />
+        android:layout_marginBottom="35sp" />
 
 </RelativeLayout>
