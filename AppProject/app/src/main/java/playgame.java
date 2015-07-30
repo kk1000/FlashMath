@@ -173,14 +173,25 @@ public class playgame extends Activity{
 
         final CountDownTimer timer = new CountDownTimer(60000,1000) {
             Boolean newProblem = true;
+
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
-                int answer = getAnswer();
+                int CorrectAnswer = 1;
+
+                if(newProblem == true) {
+                    int min = 0, max = 10;
+                    int num1 = getRandomNumber(min, max);
+                    int num2 = getRandomNumber(min, max);
+                    CorrectAnswer = num1 + num2;
+                    currentProblem.setText(num1 + " " + "+" + " " + num2);
+                    newProblem = false;
+                }
+
+                final int finalCorrectAnswer = CorrectAnswer;
                 go.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int number = -1;
-                        if(Integer.parseInt(answer.getText().toString()) == number) {
+                        if(finalCorrectAnswer == getAnswer(answer)) {
                             answer.setText("");
                             newProblem = true;
                         }
@@ -230,7 +241,10 @@ public class playgame extends Activity{
     }
 
     public int getAnswer(EditText answer){
-        return Integer.parseInt(answer.getText().toString());
+        String ans = answer.getText().toString();
+        if(ans.length() != 0)
+            return Integer.parseInt(ans);
+        else return -1;
     }
 
 }
