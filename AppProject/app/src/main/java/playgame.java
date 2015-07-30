@@ -238,7 +238,7 @@ public class playgame extends Activity{
             }
 
             public void onFinish() {
-                gameOver(gameover, BackHome, PlayAgain, currentProblem, answer);
+                gameOver(gameover, currentProblem, answer);
                 myTimer.setText(":0");
                 if(starCount != 1) {
                     won.setText("WON: " + starCount + " ");
