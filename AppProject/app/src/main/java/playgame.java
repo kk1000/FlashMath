@@ -5,6 +5,7 @@ package mobileapplicationdevelopment.flashmath;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
@@ -18,19 +19,25 @@ import android.view.View;
 import org.apache.http.auth.BasicUserPrincipal;
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 import mobileapplicationdevelopment.flashmath.R;
 
 public class playgame extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playgame);
         final RelativeLayout gameover = (RelativeLayout) findViewById(R.id.gameover);
 
 
-
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         final TextView myTimer = (TextView) findViewById(R.id.timer);
         myTimer.setTypeface(myFont);
+
+        final TextView currentProblem = (TextView) findViewById(R.id.problem);
+        currentProblem.setTypeface(myFont);
 
         final TextView TimesUp = (TextView) findViewById(R.id.timesuptext);
         TimesUp.setTypeface(myFont);
@@ -45,19 +52,7 @@ public class playgame extends Activity{
         PlayAgain.setTypeface(myFont);
 
 
-        BackHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(playgame.this, mobileapplicationdevelopment.flashmath.home.class));
-            }
-        });
 
-        PlayAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RestartGame(gameover);
-            }
-        });
 
 
         final Button one = (Button) findViewById(R.id.one);
@@ -86,20 +81,41 @@ public class playgame extends Activity{
         final Button go = (Button) findViewById(R.id.go);
         go.setTypeface(myFont);
 
-        CountDownTimer timer = new CountDownTimer(5000,0000) {
+
+        BackHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(playgame.this, mobileapplicationdevelopment.flashmath.home.class));
+            }
+        });
+
+
+        final CountDownTimer timer = new CountDownTimer(5000,1000) {
+            Boolean newProblem = true;
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
 
-//                if(secRemaining < 15000) {
-//                    //myTimer.setTextColor();
-//                }
+                if(newProblem == true) {
+                    int min = 0, max = 10;
+                    int num1 = getRandomNumber(min, max);
+                    int num2 = getRandomNumber(min, max);
+                    currentProblem.setText(num1 + " " + "+" + " " + num2);
+                }
+                
             }
             public void onFinish() {
 
-                gameOver(gameover, BackHome, PlayAgain);
+                gameOver(gameover, BackHome, PlayAgain, currentProblem);
                 myTimer.setText(":0");
             }
         };
+
+        PlayAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RestartGame(gameover, timer, currentProblem);
+            }
+        });
 
 
 
@@ -108,13 +124,21 @@ public class playgame extends Activity{
 
     }
 
-    public void gameOver(final RelativeLayout gameover, Button BackHome, Button PlayAgain){
+    public void gameOver(final RelativeLayout gameover, Button BackHome, Button PlayAgain, TextView currentProblem){
+        currentProblem.setVisibility(View.GONE);
         gameover.setVisibility(View.VISIBLE);
     }
 
-    public void RestartGame(RelativeLayout gameover){
+    public void RestartGame(RelativeLayout gameover, CountDownTimer timer, TextView currentProblem){
         gameover.setVisibility(View.GONE);
+        currentProblem.setVisibility(View.VISIBLE);
+        timer.start();
 
+    }
+
+    public int getRandomNumber(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
     }
 
 }

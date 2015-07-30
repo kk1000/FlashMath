@@ -143,6 +143,7 @@
             android:text="@string/won"
             android:background="@drawable/gameoverborder"
             android:textSize="50sp"
+            android:textColor="#000000"
             android:gravity = "center"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -174,5 +175,16 @@
 
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="75sp"
+        android:text="0 x 0"
+        android:id="@+id/problem"
+        android:textColor="#000000"
+        android:layout_below="@+id/timer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp" />
 
 </RelativeLayout>
