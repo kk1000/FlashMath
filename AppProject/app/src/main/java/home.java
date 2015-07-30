@@ -2,65 +2,146 @@ package mobileapplicationdevelopment.flashmath;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import android.util.TypedValue;
 import android.view.View;
-import android.os.Handler;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup.*;
+import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.support.v7.app.ActionBarActivity;
-import android.view.View;
+import android.app.Activity;
 
 import mobileapplicationdevelopment.flashmath.R;
 
 /**
  * Created by nikolaschaconas on 7/17/15.
  */
-public class home extends ActionBarActivity{
+public class home extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
+        boolean easy = false, hard = false;
 
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+
         setContentView(R.layout.home);
-        Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
-        TextView myLevel = (TextView) findViewById(R.id.level);
-        TextView myEasy = (TextView) findViewById(R.id.easy);
-        TextView myHard = (TextView) findViewById(R.id.hard);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+
+        final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+        final TextView myLevel = (TextView) findViewById(R.id.level);
+        final TextView myEasy = (TextView) findViewById(R.id.easy);
+        final TextView myHard = (TextView) findViewById(R.id.hard);
+        final TextView myType = (TextView) findViewById(R.id.type);
+        final TextView User = (TextView) findViewById(R.id.user);
+        User.setTypeface(myFont);
+        myType.setTypeface(myFont);
         myLevel.setTypeface(myFont);
+
+
+        //Easy Button
         myEasy.setTypeface(myFont);
         myEasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO call function easy
+                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+                myHard.setTypeface(myFont,Typeface.NORMAL);
+                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+                myEasy.setTypeface(myFont,Typeface.BOLD);
+
             }
         });
+
+        //Hard Button
         myHard.setTypeface(myFont);
         myHard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO call function hard
+                myEasy.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+                myEasy.setTypeface(myFont, Typeface.NORMAL);
+                myHard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+                myHard.setTypeface(myFont,Typeface.BOLD);
             }
         });
 
-        ImageButton SettingsButton = (ImageButton) findViewById(R.id.settings);
+
+        final RadioGroup difficultyGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        final RadioButton addButton = (RadioButton) findViewById(R.id.add);
+        final RadioButton subtractButton = (RadioButton) findViewById(R.id.subtract);
+        final RadioButton multiplyButton = (RadioButton) findViewById(R.id.multiply);
+        final RadioButton divideButton = (RadioButton) findViewById(R.id.divide);
+
+        difficultyGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+
+            public void onCheckedChanged(RadioGroup group, int checkId) {
+                if(checkId == R.id.add) {
+
+                    addButton.setBackgroundResource(R.drawable.addition_pressed);
+                    subtractButton.setBackgroundResource(R.drawable.subtract);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    divideButton.setBackgroundResource(R.drawable.divide);
+                }
+                else if (checkId == R.id.subtract) {
+                    addButton.setBackgroundResource(R.drawable.addition);
+                    subtractButton.setBackgroundResource(R.drawable.subtract_pressed);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    divideButton.setBackgroundResource(R.drawable.divide);
+                }
+                else if (checkId == R.id.multiply) {
+                    addButton.setBackgroundResource(R.drawable.addition);
+                    subtractButton.setBackgroundResource(R.drawable.subtract);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply_pressed);
+                    divideButton.setBackgroundResource(R.drawable.divide);
+                }
+                else {
+                    addButton.setBackgroundResource(R.drawable.addition);
+                    subtractButton.setBackgroundResource(R.drawable.subtract);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    divideButton.setBackgroundResource(R.drawable.divide_pressed);
+                }
+            }
+        });
+
+        final RadioGroup userGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
+        final RadioButton boyButton = (RadioButton) findViewById(R.id.boy);
+        final RadioButton girlButton = (RadioButton) findViewById(R.id.girl);
+
+        userGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+
+            public void onCheckedChanged(RadioGroup group, int checkId) {
+                if(checkId == R.id.boy) {
+                    boyButton.setBackgroundResource(R.drawable.boy_pressed);
+                    girlButton.setBackgroundResource(R.drawable.girl);
+                }
+                else if (checkId == R.id.girl) {
+                    boyButton.setBackgroundResource(R.drawable.boy);
+                    girlButton.setBackgroundResource(R.drawable.girl_pressed);
+                }
+            }
+        });
+
+        final Button SettingsButton = (Button) findViewById(R.id.settings);
+        SettingsButton.setTypeface(myFont);
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Settings(v);
             }
         });
 
-        Button StartButton = (Button) findViewById(R.id.start_button);
-
+        final Button StartButton = (Button) findViewById(R.id.start_button);
+        StartButton.setTypeface(myFont);
         StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StartGame(v);
             }
         });
+
+
     }
 
     public void Settings(View v) {
@@ -70,25 +151,4 @@ public class home extends ActionBarActivity{
             startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.playgame.class));
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 }

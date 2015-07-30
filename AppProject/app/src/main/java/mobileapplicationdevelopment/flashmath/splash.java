@@ -1,8 +1,8 @@
 package mobileapplicationdevelopment.flashmath;
 
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,14 +12,16 @@ import android.os.Handler;
 import android.app.Activity;
 
 
-public class splash extends ActionBarActivity {
+public class splash extends Activity {
 
-    public static int Splash_Time = 1000;
+
+    public static int Splash_Time = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.splash);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         TextView myTextView = (TextView) findViewById(R.id.logo1);
         TextView mySlogan = (TextView) findViewById(R.id.slogan);
