@@ -15,7 +15,7 @@ import android.app.Activity;
 public class splash extends Activity {
 
 
-    public static int Splash_Time = 3000;
+    public static int Splash_Time = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
