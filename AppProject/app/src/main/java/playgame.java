@@ -196,7 +196,7 @@ public class playgame extends Activity{
         };
 
 
-        final CountDownTimer timer = new CountDownTimer(30000,1000) {
+        final CountDownTimer timer = new CountDownTimer(15000,1000) {
             Boolean newProblem = true;
 
             public void onTick(long secRemaining) {
@@ -244,9 +244,11 @@ public class playgame extends Activity{
                     won.setText("WON: " + starCount + " ");
                     apostraphes.setVisibility(View.VISIBLE);
                 }
-                else
+                else {
                     apostraphes.setVisibility(View.GONE);
                     won.setText("WON: " + starCount + " ");
+                }
+                starCount = 0;
             }
         };
 
@@ -254,6 +256,7 @@ public class playgame extends Activity{
             @Override
             public void onClick(View v) {
                 RestartGame(gameover, timer, currentProblem, answer);
+                starText.setText("x" + starCount);
             }
         });
 
@@ -264,7 +267,7 @@ public class playgame extends Activity{
 
 
 
-    public void gameOver(final RelativeLayout gameover, Button BackHome, Button PlayAgain, TextView currentProblem, EditText answer){
+    public void gameOver(final RelativeLayout gameover, TextView currentProblem, EditText answer){
         currentProblem.setVisibility(View.GONE);
         gameover.setVisibility(View.VISIBLE);
         answer.setVisibility(View.GONE);
