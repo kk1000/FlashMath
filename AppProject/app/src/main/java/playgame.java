@@ -90,18 +90,20 @@ public class playgame extends Activity{
         });
 
 
-        final CountDownTimer timer = new CountDownTimer(5000,1000) {
+        final CountDownTimer timer = new CountDownTimer(60000,1000) {
             Boolean newProblem = true;
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
 
+                if(secRemaining % 7 == 0) newProblem = true;
+                else newProblem = false;
                 if(newProblem == true) {
                     int min = 0, max = 10;
                     int num1 = getRandomNumber(min, max);
                     int num2 = getRandomNumber(min, max);
                     currentProblem.setText(num1 + " " + "+" + " " + num2);
                 }
-                
+
             }
             public void onFinish() {
 
