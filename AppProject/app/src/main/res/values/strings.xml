@@ -36,4 +36,5 @@
     <string name="incorrecttext">Sorry, Incorrect!</string>
     <string name="needToSelect">Select Level, Type, and User to Start Game!</string>
     <string name="ok">OK</string>
+    <string name="selectUser">Select a User!</string>
 </resources>
