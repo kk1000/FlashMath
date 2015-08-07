@@ -4,6 +4,8 @@
 package mobileapplicationdevelopment.flashmath;
 
 
+import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -11,7 +13,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,14 +20,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.*;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-
-import mobileapplicationdevelopment.flashmath.R;
 
 public class settings extends Activity{
 
@@ -43,6 +37,13 @@ public class settings extends Activity{
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
 
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
+
+        final TextView stars = (TextView) findViewById(R.id.statText);
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int starNum = preferences.getInt("StarScore", 0);
+        stars.setTypeface(myFont);
+        stars.setText(starNum + "/");
+
 
         final Button saveButton = (Button) findViewById(R.id.save);
         final Button cashButton = (Button) findViewById(R.id.cash);
@@ -78,6 +79,7 @@ public class settings extends Activity{
 
                     }
                     else {
+                        boy_target = Integer.parseInt(boy_target_string.getText().toString());
                         boy_reward = boy_reward_string.getText().toString();
                     }
                     getIntent().putExtra("boy_reward", boy_reward);
@@ -87,6 +89,22 @@ public class settings extends Activity{
                 BackToHome(v);
             }
         });
+
+        cashButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int starNum = preferences.getInt("StarScore", 0);
+                int diff = starNum - 2;
+                stars.setTypeface(myFont);
+                stars.setText(diff + " /");
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("StarScore", diff);
+                editor.apply();
+            }
+        });
+
+        boyButton.setBackgroundResource(R.drawable.boy_pressed);
+        boyButton.setChecked(true);
 
         users.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
