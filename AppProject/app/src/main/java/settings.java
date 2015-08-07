@@ -34,7 +34,7 @@ public class settings extends Activity{
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int starNum = preferences.getInt("StarScore", 0);
         stars.setTypeface(myFont);
-        stars.setText(starNum + "/");
+        stars.setText(starNum + " /");
 
 
         final Button saveButton = (Button) findViewById(R.id.save);
