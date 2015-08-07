@@ -200,9 +200,21 @@ public class playgame extends Activity{
             Boolean newProblem = true;
 
             public void onTick(long secRemaining) {
+                boolean visible = false;
                 myTimer.setText(":" + secRemaining / 1000);
-                if(secRemaining < 10000) {
+                if(secRemaining < 11000) {
                     myTimer.setTextColor(Color.RED);
+                    if(secRemaining % 500 == 0){
+                        if(!visible) {
+                            myTimer.setVisibility(View.INVISIBLE);
+                            visible = true;
+                        }
+                        else{
+                            myTimer.setVisibility(View.VISIBLE);
+                            visible = false;
+                        }
+                    }
+
                 }
                 final TextView CorrectAnswer = (TextView) findViewById(R.id.correctanswer);
                 int min = 0, max = 0;
@@ -227,6 +239,11 @@ public class playgame extends Activity{
                     }
                     else if (type.equals("minus")) {
                         symbolForOperator = "-";
+                        if(num2 > num1){
+                            int tmp = num1;
+                            num1 = num2;
+                            num2 = tmp;
+                        }
                         CorrectAnswer.setText((num1 - num2)+"");
                     }
                     else if (type.equals("multiply")) {
@@ -280,6 +297,7 @@ public class playgame extends Activity{
 
             public void onFinish() {
                 gameOver(gameover, currentProblem, answer, go);
+                myTimer.setVisibility(View.VISIBLE);
                 myTimer.setText(":0");
                 if(starCount != 1) {
                     won.setText("WON: " + starCount + " ");
@@ -301,6 +319,7 @@ public class playgame extends Activity{
         PlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myTimer.setTextColor(Color.BLACK);
                 RestartGame(gameover, timer, currentProblem, answer, go);
                 starText.setText("x" + starCount);
             }
