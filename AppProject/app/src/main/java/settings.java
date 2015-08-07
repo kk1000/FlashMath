@@ -57,13 +57,13 @@ public class settings extends Activity{
         final EditText boy_reward_string = (EditText) findViewById(R.id.rewardText);
 
         if (boy_target == 0) {
-            boy_target_string.setText("Enter goal stars!");
+            boy_target_string.setText(null);
         }
         else {
             boy_target = Integer.parseInt(boy_target_string.getText().toString());
         }
         if (boy_reward == "") {
-            boy_reward_string.setText("Enter a reward!");
+            boy_reward_string.setText(null);
         }
         else {
             boy_reward = boy_reward_string.getText().toString();
@@ -74,22 +74,19 @@ public class settings extends Activity{
             public void onClick(View v) {
                 if (users.getCheckedRadioButtonId() == boyButton.getId()) {
                     if (boy_target == 0) {
-                        boy_target_string.setText("Enter goal stars!");
+                        boy_target_string.setText(null);
                     }
                     else {
                         boy_target = Integer.parseInt(boy_target_string.getText().toString());
 
                     }
                     if (boy_reward == "") {
-                        boy_reward_string.setText("Enter a reward!");
+                        boy_reward_string.setText(null);
 
                     }
                     else {
-                        boy_target = Integer.parseInt(boy_target_string.getText().toString());
                         boy_reward = boy_reward_string.getText().toString();
                     }
-                    getIntent().putExtra("boy_reward", boy_reward);
-                    getIntent().putExtra("boy_target", boy_target);
                 }
 
                 BackToHome(v);
@@ -102,7 +99,10 @@ public class settings extends Activity{
                 int starNum = preferences.getInt("StarScore", 0);
                 int diff = starNum - 2;
                 stars.setTypeface(myFont);
-                stars.setText(diff + " /");
+                if (diff < 0) {
+                    diff = 0;
+                }
+                else { stars.setText(diff + " /"); }
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putInt("StarScore", diff);
                 editor.apply();

@@ -68,8 +68,8 @@
         android:inputType="number"
         android:ems="6"
         android:textSize="30sp"
+        android:hint="Goal?"
         android:id="@+id/targetText"
-        android:saveEnabled="true"
         android:layout_marginRight="90dp"
         android:layout_alignBottom="@+id/target"
         android:layout_alignRight="@+id/playTitle"
@@ -100,6 +100,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="6"
+        android:hint="Reward?"
         android:textSize="30sp"
         android:id="@+id/rewardText"
         android:layout_alignBottom="@+id/reward"
@@ -121,9 +122,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="6"
-        android:background="@drawable/gameoverborder"
         android:id="@+id/statText"
         android:textSize = "50sp"
         android:textColor = "#000000"
@@ -152,9 +150,8 @@
         android:id="@+id/save"
         android:selectAllOnFocus="true"
         android:layout_marginBottom="15dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:clickable="false" />
+        android:layout_above="@+id/cash"
+        android:layout_centerHorizontal="true" />
 
     <!-- Cash In Button-->
     <Button
