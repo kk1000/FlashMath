@@ -40,7 +40,8 @@ public class settings extends Activity{
         final RadioGroup users = (RadioGroup) findViewById(R.id.radioUsers);
         final RadioButton boyButton = (RadioButton) findViewById(R.id.boy);
         final RadioButton girlButton = (RadioButton) findViewById(R.id.girl);
-
+        boyButton.setBackgroundResource(R.drawable.boy_pressed);
+        boyButton.setChecked(true);
         users.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             public void onCheckedChanged(RadioGroup group, int checkId) {

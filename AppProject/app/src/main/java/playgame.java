@@ -9,22 +9,18 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.TypedValue;
+import android.graphics.Color;
 import android.widget.Button;
 import android.os.CountDownTimer;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
 
-import org.apache.http.auth.BasicUserPrincipal;
-import org.w3c.dom.Text;
 
 import java.util.Random;
 
-import mobileapplicationdevelopment.flashmath.R;
 
 public class playgame extends Activity{
     private int starCount = 0;
@@ -201,6 +197,9 @@ public class playgame extends Activity{
 
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
+                if(secRemaining < 10000) {
+                    myTimer.setTextColor(Color.RED);
+                }
                 final TextView CorrectAnswer = (TextView) findViewById(R.id.correctanswer);
                 int min = 0, max = 0;
                 if(newProblem == true) {
@@ -234,7 +233,7 @@ public class playgame extends Activity{
                         if(num2 == 0) num2 = 1;
                         if(num1 % num2 != 0){
                             if(num1 % 2 == 0) num2 = 2;
-                            else if (num1 %3 == 0) num2 = 3;
+                            else if (num1 % 3 == 0) num2 = 3;
                             else if (num1 % 5 == 0) num2 = 5;
                             else if (num1 % 7 == 0) num2 = 7;
                             else if (num1 % 11 == 0) num2 = 11;
@@ -256,6 +255,7 @@ public class playgame extends Activity{
                         if(Integer.parseInt(CorrectAnswer.getText().toString()) == getAnswer(answer)) {
                             answer.setText("");
                             newProblem = true;
+                            red_x.setVisibility(View.GONE);
                             green_check.setVisibility(View.VISIBLE);
                             green_check.bringToFront();
                             popUp.start();
@@ -264,6 +264,7 @@ public class playgame extends Activity{
 
                         else {
                             answer.setText("");
+                            green_check.setVisibility(View.GONE);
                             red_x.setVisibility(View.VISIBLE);
                             red_x.bringToFront();
                             popUp.start();
