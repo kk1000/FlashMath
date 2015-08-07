@@ -39,8 +39,6 @@ public class home extends Activity{
         //setting font for page
         final Typeface myFont = Typeface.createFromAsset(getAssets(), "Cutie Patootie Skinny.ttf");
         final TextView myLevel = (TextView) findViewById(R.id.level);
-        final TextView myEasy = (TextView) findViewById(R.id.easy);
-        final TextView myHard = (TextView) findViewById(R.id.hard);
         final TextView myType = (TextView) findViewById(R.id.type);
         final TextView User = (TextView) findViewById(R.id.user);
         User.setTypeface(myFont);
@@ -133,7 +131,7 @@ public class home extends Activity{
         SettingsButton.setTypeface(myFont);
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Settings(v);
+                Settings();
             }
         });
 
@@ -156,7 +154,8 @@ public class home extends Activity{
             @Override
             public void onClick(View v) {
                 if (levelClicked && difficultyClicked && userClicked) {
-                    StartGame(v);
+                    StartGame(levelGroup,difficultyGroup, easyButton.getId(), hardButton.getId(),
+                            addButton.getId(), subtractButton.getId(), multiplyButton.getId(), divideButton.getId());
                 }
                 else {
                     failStart.setVisibility(View.VISIBLE);
@@ -164,14 +163,42 @@ public class home extends Activity{
             }
         });
 
-
     }
 
-    public void Settings(View v) {
+    public void Settings() {
         startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.settings.class));
     }
-    public void StartGame(View v) {
-            startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.playgame.class));
+    public void StartGame(RadioGroup levelGroup, RadioGroup difficultyGroup, int easyID, int hardID, int plus, int minus, int multiply, int divide) {
+            Intent startGameIntent = new Intent(home.this, mobileapplicationdevelopment.flashmath.playgame.class);
+
+            int level = levelGroup.getCheckedRadioButtonId();
+            if (level == easyID) {
+                startGameIntent.putExtra("level","easy");
+            }
+            else if (level == hardID){
+                startGameIntent.putExtra("level","hard");
+            }
+
+            int type = difficultyGroup.getCheckedRadioButtonId();
+            if(type == plus) {
+                startGameIntent.putExtra("type","plus");
+            }
+            else if (type == minus) {
+                startGameIntent.putExtra("type","minus");
+            }
+            else if (type == multiply) {
+                startGameIntent.putExtra("type","multiply");
+            }
+            else {
+                startGameIntent.putExtra("type","divide");
+            }
+
+            startActivity(startGameIntent);
+
+
+
+
     }
+
 
 }
