@@ -59,8 +59,14 @@ public class settings extends Activity{
         if (boy_target == 0) {
             boy_target_string.setText("Enter goal stars!");
         }
+        else {
+            boy_target = Integer.parseInt(boy_target_string.getText().toString());
+        }
         if (boy_reward == "") {
             boy_reward_string.setText("Enter a reward!");
+        }
+        else {
+            boy_reward = boy_reward_string.getText().toString();
         }
 
         saveButton.setOnClickListener(new View.OnClickListener() {
