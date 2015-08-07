@@ -107,16 +107,27 @@
         android:layout_alignLeft="@+id/reward"
         android:layout_alignStart="@+id/reward" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="6"
-        android:textSize="30sp"
         android:id="@+id/statText"
+        android:textSize = "50sp"
+        android:textColor = "#000000"
+        android:layout_gravity="center_horizontal"
         android:layout_alignBottom="@+id/stats"
         android:layout_alignLeft="@+id/rewardText"
         android:layout_alignStart="@+id/rewardText" />
+
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="number"-->
+        <!--android:ems="6"-->
+        <!--android:textSize="30sp"-->
+        <!--android:id="@+id/statText"-->
+        <!--android:layout_alignBottom="@+id/stats"-->
+        <!--android:layout_alignLeft="@+id/rewardText"-->
+        <!--android:layout_alignStart="@+id/rewardText" />-->
 
     <!--Save Game Button-->
     <Button
@@ -126,11 +137,10 @@
         android:textSize="35dp"
         android:background="#ffffff"
         android:id="@+id/save"
-        android:layout_marginBottom="110dp"
         android:selectAllOnFocus="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/cash"
+        android:layout_centerHorizontal="true" />
 
     <!-- Cash In Button-->
     <Button
