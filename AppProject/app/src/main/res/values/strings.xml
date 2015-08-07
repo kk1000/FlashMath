@@ -29,11 +29,12 @@
     <string name="won">WON: </string>
     <string name="play_again">Play Again</string>
     <string name="back_home">Back to Home</string>
-    <string name ="settings_text"> I am the settings Screen</string>
+    <string name ="settings_text">I am the settings Screen</string>
     <string name="save">Save</string>
     <string name="cash">Cash In!</string>
     <string name="correcttext">Correct!</string>
     <string name="incorrecttext">Sorry, Incorrect!</string>
     <string name="needToSelect">Select Level, Type, and User to Start Game!</string>
     <string name="ok">OK</string>
+    <!--<string name="starScore"></string>-->
 </resources>

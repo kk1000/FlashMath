@@ -4,11 +4,15 @@
 package mobileapplicationdevelopment.flashmath;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
+import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.graphics.Color;
 import android.widget.Button;
 import android.os.CountDownTimer;
@@ -303,6 +307,11 @@ public class playgame extends Activity{
                     apostraphes.setVisibility(View.GONE);
                     won.setText("WON: " + starCount + " ");
                 }
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(playgame.this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("StarScore", preferences.getInt("StarScore", 0) + starCount);
+                editor.apply();
                 starCount = 0;
             }
         };
