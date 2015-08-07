@@ -63,17 +63,26 @@
         android:layout_alignStart="@+id/playTitle" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="6"
         android:textSize="30sp"
         android:id="@+id/targetText"
         android:saveEnabled="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="90dp"
         android:layout_alignBottom="@+id/target"
         android:layout_alignRight="@+id/playTitle"
         android:layout_alignEnd="@+id/playTitle" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/star"
+        android:id="@+id/starTop"
+        android:layout_alignTop="@+id/targetText"
+        android:layout_alignRight="@+id/save"
+        android:layout_alignEnd="@+id/save" />
 
     <!-- Reward field -->
 
@@ -94,8 +103,9 @@
         android:textSize="30sp"
         android:id="@+id/rewardText"
         android:layout_alignBottom="@+id/reward"
-        android:layout_alignLeft="@+id/targetText"
-        android:layout_alignStart="@+id/targetText" />
+        android:layout_marginRight="20dp"
+        android:layout_alignRight="@+id/playTitle"
+        android:layout_alignEnd="@+id/playTitle" />
 
     <!-- Stats field -->
 
@@ -119,9 +129,18 @@
         android:textColor = "#000000"
         android:layout_gravity="center_horizontal"
         android:layout_alignBottom="@+id/stats"
-        android:layout_alignLeft="@+id/rewardText"
-        android:layout_alignStart="@+id/rewardText" />
+        android:layout_alignLeft="@+id/targetText"
+        android:layout_alignStart="@+id/targetText" />
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/star"
+        android:id="@+id/star"
+        android:layout_below="@+id/reward"
+        android:layout_toRightOf="@+id/statText"
+        android:layout_alignLeft="@+id/starTop"
+        android:layout_alignBottom="@+id/stats" />
 
     <!--Save Game Button-->
     <Button
