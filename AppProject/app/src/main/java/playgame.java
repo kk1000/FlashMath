@@ -202,13 +202,48 @@ public class playgame extends Activity{
             public void onTick(long secRemaining) {
                 myTimer.setText(":" + secRemaining / 1000);
                 final TextView CorrectAnswer = (TextView) findViewById(R.id.correctanswer);
-
+                int min = 0, max = 0;
                 if(newProblem == true) {
-                    int min = 0, max = 10;
+                    String level= getIntent().getExtras().getString("level");
+                    if(level.equals("easy")) {
+                        max = 8;
+                    }
+                    else if(level.equals("hard")) {
+                        max = 12;
+                    }
+
                     int num1 = getRandomNumber(min, max);
                     int num2 = getRandomNumber(min, max);
-                    CorrectAnswer.setText((num1 * num2)+"");
-                    currentProblem.setText(num1 + " " + "*" + " " + num2);
+
+
+                    String type = getIntent().getExtras().getString("type");
+                    String symbolForOperator = "+";
+                    if(type.equals("plus")) {
+                        symbolForOperator = "+";
+                        CorrectAnswer.setText((num1 + num2)+"");
+                    }
+                    else if (type.equals("minus")) {
+                        symbolForOperator = "-";
+                        CorrectAnswer.setText((num1 - num2)+"");
+                    }
+                    else if (type.equals("multiply")) {
+                        symbolForOperator = "*";
+                        CorrectAnswer.setText((num1 * num2)+"");
+                    }
+                    else if (type.equals("divide")) {
+                        if(num1 % num2 != 0){
+                            if(num1 % 2 == 0) num2 = 2;
+                            else if (num1 %3 == 0) num2 = 3;
+                            else if (num1 % 5 == 0) num2 = 5;
+                            else if (num1 % 7 == 0) num2 = 7;
+                            else if (num1 % 11 == 0) num2 = 11;
+                            else num2 = 1;
+                        }
+                        symbolForOperator = "/";
+                        CorrectAnswer.setText((num1 / num2)+"");
+                    }
+
+                    currentProblem.setText(num1 + " " + symbolForOperator + " " + num2);
                     newProblem = false;
                 }
 
