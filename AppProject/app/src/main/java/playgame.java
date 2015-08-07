@@ -231,6 +231,7 @@ public class playgame extends Activity{
                         CorrectAnswer.setText((num1 * num2)+"");
                     }
                     else if (type.equals("divide")) {
+                        if(num2 == 0) num2 = 1;
                         if(num1 % num2 != 0){
                             if(num1 % 2 == 0) num2 = 2;
                             else if (num1 %3 == 0) num2 = 3;
