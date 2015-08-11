@@ -11,6 +11,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.graphics.Color;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.os.CountDownTimer;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -28,8 +30,21 @@ import java.util.Random;
 
 public class playgame extends Activity{
     private int starCount = 0;
-    public int getStarCount(){return starCount;}
+    private int stars = 0;
+    private ProgressBar progressBar;
+    private int progressStatus = 0;
+    private TextView starLeft;
+    private Handler handler = new Handler();
+    public SharedPreferences.Editor editor;
+    public SharedPreferences preferences;
+
     protected void onCreate(Bundle savedInstanceState) {
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+
+        editor.putInt("starCounter", stars);
+        editor.apply();
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         super.onCreate(savedInstanceState);
@@ -67,7 +82,12 @@ public class playgame extends Activity{
 
         final FrameLayout red_x = (FrameLayout) findViewById(R.id.red_x);
 
-
+        //set user image in top corner
+        final FrameLayout user = (FrameLayout) findViewById(R.id.userImage);
+        if(getIntent().getExtras().getString("user").equals("boy"))
+            user.setBackgroundResource(R.drawable.boy);
+        else
+            user.setBackgroundResource(R.drawable.girl);
 
         final Button one = (Button) findViewById(R.id.one);
         one.setTypeface(myFont);
@@ -181,6 +201,8 @@ public class playgame extends Activity{
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putInt("starCounter", stars);
+                editor.apply();
                 startActivity(new Intent(playgame.this, mobileapplicationdevelopment.flashmath.home.class));
             }
         });
@@ -281,6 +303,8 @@ public class playgame extends Activity{
                             green_check.bringToFront();
                             popUp.start();
                             starText.setText("x" + ++starCount);
+                            editor.putInt("starCounter", preferences.getInt("starCounter", 0) + 1);
+                            editor.apply();
                         }
 
                         else {
@@ -310,8 +334,12 @@ public class playgame extends Activity{
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(playgame.this);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("StarScore", preferences.getInt("StarScore", 0) + starCount);
+                if(getIntent().getExtras().getString("user").equals("boy"))
+                    editor.putInt("boy_stars", preferences.getInt("boy_stars", 0) + starCount);
+                else
+                    editor.putInt("girl_stars", preferences.getInt("girl_stars", 0) + starCount);
                 editor.apply();
+
                 starCount = 0;
             }
         };
@@ -328,6 +356,60 @@ public class playgame extends Activity{
 
 
         timer.start();
+
+
+
+//Progress Bar
+
+        final int target;
+        final int starsSoFar;
+        final String reward;
+
+        if (getIntent().getExtras().getString("user").equals("boy")) {
+            target = preferences.getInt("boy_target", 0);
+            reward = preferences.getString("boy_reward", "");
+            starsSoFar = preferences.getInt("boy_stars", 0);
+
+        } else {
+            target = preferences.getInt("girl_target", 0);
+            reward = preferences.getString("girl_reward", "");
+            starsSoFar = preferences.getInt("girl_stars", 0);
+        }
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBarStar);
+        starLeft = (TextView) findViewById(R.id.progressText);
+        starLeft.setTypeface(myFont);
+        // Start long running operation in a background thread
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatus < target) {
+                    progressStatus += 1;
+                    // Update the progress bar and display the
+                    //current value in the text view
+                    handler.post(new Runnable() {
+                        public void run() {
+                            int total = preferences.getInt("starCounter", 0) + starsSoFar;
+                            int diff = target - total;
+                            progressBar.setProgress(progressStatus);
+                            starLeft.setText(diff + " more Stars until " + reward + "!");
+                        }
+                    });
+                    try {
+                        // Sleep for 200 milliseconds.
+                        //Just to display the progress slowly
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+
+
+
+
+
     }
 
 

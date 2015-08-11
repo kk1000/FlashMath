@@ -6,11 +6,12 @@
 
 
     <TextView
-        android:layout_width="130dp"
+        android:layout_width="80dp"
         android:layout_height="70dp"
         android:textSize="40sp"
         android:textColor="#000000"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/timer" />
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -302,7 +303,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:id="@+id/relativeLayout">
 
         <ImageView
             android:layout_width="50dp"
@@ -324,5 +326,31 @@
             android:layout_toRightOf="@+id/starphoto"
             android:layout_toEndOf="@+id/starphoto" />
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="65dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/userImage"
+        android:layout_marginLeft="35dp"></FrameLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarStar"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/answer"
+        android:layout_alignBottom="@+id/userImage"
+        android:layout_alignLeft="@+id/problem"
+        android:layout_alignStart="@+id/problem" />
+
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_alignLeft="@+id/progressBarStar"
+        android:layout_below="@+id/progressBarStar"/>
 
 </RelativeLayout>
