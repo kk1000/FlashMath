@@ -37,6 +37,7 @@ public class playgame extends Activity{
     private Handler handler = new Handler();
     public SharedPreferences.Editor editor;
     public SharedPreferences preferences;
+    Boolean newProblem = true;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -219,7 +220,6 @@ public class playgame extends Activity{
 
 
         final CountDownTimer timer = new CountDownTimer(15000,1000) {
-            Boolean newProblem = true;
 
             public void onTick(long secRemaining) {
                 boolean visible = false;
@@ -382,8 +382,10 @@ public class playgame extends Activity{
         // Start long running operation in a background thread
         new Thread(new Runnable() {
             public void run() {
-                while (progressStatus < target) {
-                    progressStatus += 1;
+                while (true) {
+                    if (newProblem) {
+                        progressStatus += 1;
+                    }
                     // Update the progress bar and display the
                     //current value in the text view
                     handler.post(new Runnable() {
@@ -391,13 +393,17 @@ public class playgame extends Activity{
                             int total = preferences.getInt("starCounter", 0) + starsSoFar;
                             int diff = target - total;
                             progressBar.setProgress(progressStatus);
-                            starLeft.setText(diff + " more Stars until " + reward + "!");
+                            if (diff > 0) {
+                                starLeft.setText(diff + " more Stars until " + reward + "!");
+                            } else {
+                                starLeft.setText("You have enough stars for " + reward + "!");
+                            }
                         }
                     });
                     try {
                         // Sleep for 200 milliseconds.
                         //Just to display the progress slowly
-                        Thread.sleep(1000);
+                        Thread.sleep(target * 3);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

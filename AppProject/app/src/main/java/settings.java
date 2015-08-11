@@ -303,7 +303,7 @@ public class settings extends Activity{
 
     public void ShowStarGoal(int starNum, int StarGoal) {
         if(StarGoal != 0)
-            stars.setText(starNum + " stars out of " + StarGoal);
+            stars.setText(starNum + " / " + StarGoal);
         else
             stars.setText(starNum +" Stars, set your target!");
     }
