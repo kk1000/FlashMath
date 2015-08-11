@@ -67,7 +67,12 @@ public class playgame extends Activity{
 
         final FrameLayout red_x = (FrameLayout) findViewById(R.id.red_x);
 
-
+        //set user image in top corner
+        final FrameLayout user = (FrameLayout) findViewById(R.id.userImage);
+        if(getIntent().getExtras().getString("user").equals("boy"))
+            user.setBackgroundResource(R.drawable.boy);
+        else
+            user.setBackgroundResource(R.drawable.girl);
 
         final Button one = (Button) findViewById(R.id.one);
         one.setTypeface(myFont);
@@ -310,7 +315,10 @@ public class playgame extends Activity{
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(playgame.this);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("StarScore", preferences.getInt("StarScore", 0) + starCount);
+                if(getIntent().getExtras().getString("user").equals("boy"))
+                    editor.putInt("boy_stars", preferences.getInt("boy_stars", 0) + starCount);
+                else
+                    editor.putInt("girl_stars", preferences.getInt("girl_stars", 0) + starCount);
                 editor.apply();
                 starCount = 0;
             }
