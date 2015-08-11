@@ -119,7 +119,6 @@
         android:layout_alignBottom="@+id/stats"
         android:layout_alignLeft="@+id/targetText"
         android:layout_alignStart="@+id/targetText"
-        android:layout_alignParentStart="false"
         android:layout_alignRight="@+id/save"
         android:layout_alignEnd="@+id/save" />
     <ImageView
@@ -143,6 +142,7 @@
         android:layout_marginBottom="15dp"
         android:layout_above="@+id/cash"
         android:layout_centerHorizontal="true" />
+
     <!-- Cash In Button-->
     <Button
         android:layout_width="280dp"
