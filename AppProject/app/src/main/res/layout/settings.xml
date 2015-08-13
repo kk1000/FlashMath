@@ -164,4 +164,46 @@
         android:layout_alignLeft="@+id/save"
         android:layout_alignStart="@+id/save"
         android:layout_marginBottom="35sp" />
+
+    <!-- Cash in notification -->
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/cashInNotif"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background = "@drawable/gameoverborder">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/congratsCashIn"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:text="@string/congratsCashIn"
+            android:background="@drawable/gameoverborder"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "@string/ok"
+                android:id="@+id/okCash"
+                android:layout_weight="0.63" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </RelativeLayout>

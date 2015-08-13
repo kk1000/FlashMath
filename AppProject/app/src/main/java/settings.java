@@ -161,6 +161,20 @@ public class settings extends Activity{
             }
         });
 
+        //variables for Cash In notification
+        final TextView congratsCash = (TextView) findViewById(R.id.congratsCashIn);
+        congratsCash.setTypeface(myFont);
+        final Button okButton = (Button) findViewById(R.id.okCash);
+        okButton.setTypeface(myFont);
+        final RelativeLayout cashInNotif = (RelativeLayout) findViewById(R.id.cashInNotif);
+
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cashInNotif.setVisibility(View.GONE);
+            }
+        });
+
         cashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,6 +186,7 @@ public class settings extends Activity{
                         editor.putInt("boy_target", 0);
                         editor.putString("boy_reward", "");
                         editor.apply();
+                        cashInNotif.setVisibility(View.VISIBLE);
                         ShowBoySettings();
                     }
 
@@ -185,6 +200,7 @@ public class settings extends Activity{
                         editor.putInt("girl_target", 0);
                         editor.putString("girl_reward", "");
                         editor.apply();
+                        cashInNotif.setVisibility(View.VISIBLE);
                         ShowGirlSettings();
                     }
 
