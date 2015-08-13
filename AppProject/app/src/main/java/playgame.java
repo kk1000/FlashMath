@@ -220,7 +220,7 @@ public class playgame extends Activity{
         };
 
 
-        final CountDownTimer timer = new CountDownTimer(15000,1000) {
+        final CountDownTimer timer = new CountDownTimer(30000,1000) {
 
             public void onTick(long secRemaining) {
                 boolean visible = false;
