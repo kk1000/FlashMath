@@ -70,38 +70,56 @@ public class home extends Activity{
         multiplyButton = (RadioButton) findViewById(R.id.multiply);
         divideButton = (RadioButton) findViewById(R.id.divide);
 
-        boolean easy = false, hard = false;
+        //user group
+        userGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
+        boyButton = (RadioButton) findViewById(R.id.boy);
+        girlButton = (RadioButton) findViewById(R.id.girl);
 
+        
 
-        //reload buttons if settings were saved
-//        String Operation = preferences.getString("operatorGroup", "none");
-//        //String Operation = "stb";
-//        if(Operation.equals("add")){
-//            addButton.setChecked(true);
-//            addButton.setBackgroundResource(R.drawable.addition_pressed);
-//        }
-//        else if(Operation.equals("subtract")) {
-//            subtractButton.setChecked(true);
-//            subtractButton.setBackgroundResource(R.drawable.subtract_pressed);
-//        }
-//        else if (Operation.equals("divide")) {
-//            divideButton.setChecked(true);
-//            divideButton.setBackgroundResource(R.drawable.divide_pressed);
-//        }
-//        else if (Operation.equals("multiply")) {
-//            multiplyButton.setChecked(true);
-//            multiplyButton.setBackgroundResource(R.drawable.multiply_pressed);
-//        }
-//        String Hardness = preferences.getString("difficultyGroup","none");
-//        if (Hardness.equals("easy")) {
-//            easyButton.setChecked(true);
-//            easyButton.setBackgroundResource(R.drawable.easy_pressed);
-//        }
-//        else if (Hardness.equals("hard")) {
-//            hardButton.setChecked(true);
-//            hardButton.setBackgroundResource(R.drawable.hard_pressed);
-//        }
-
+        //saved settings
+        String Operation = preferences.getString("operatorGroup", "none");
+        if(Operation.equals("add")){
+            addButton.setChecked(true);
+            addButton.setBackgroundResource(R.drawable.addition_pressed);
+            difficultyClicked = true;
+        }
+        else if(Operation.equals("subtract")) {
+            subtractButton.setChecked(true);
+            subtractButton.setBackgroundResource(R.drawable.subtract_pressed);
+            difficultyClicked = true;
+        }
+        else if (Operation.equals("divide")) {
+            divideButton.setChecked(true);
+            divideButton.setBackgroundResource(R.drawable.divide_pressed);
+            editor.apply();
+        }
+        else if (Operation.equals("multiply")) {
+            multiplyButton.setChecked(true);
+            multiplyButton.setBackgroundResource(R.drawable.multiply_pressed);
+            difficultyClicked = true;
+        }
+        String Hardness = preferences.getString("difficultyGroup", "none");
+        if (Hardness.equals("easy")) {
+            easyButton.setChecked(true);
+            easyButton.setBackgroundResource(R.drawable.easy_pressed);
+            levelClicked = true;
+        }
+        else if (Hardness.equals("hard")) {
+            hardButton.setChecked(true);
+            hardButton.setBackgroundResource(R.drawable.hard_pressed);
+            levelClicked = true;
+        }
+        String Users = preferences.getString("userGroup", "none");
+        if (Users.equals("boy")) {
+            boyButton.setChecked(true);
+            boyButton.setBackgroundResource(R.drawable.boy_pressed);
+            userClicked = true;
+        } else {
+            girlButton.setChecked(true);
+            girlButton.setBackgroundResource(R.drawable.girl_pressed);
+            userClicked = true;
+        }
 
 
 
@@ -177,21 +195,23 @@ public class home extends Activity{
         });
 
         //clicking boy or girl user
-        userGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
-        boyButton = (RadioButton) findViewById(R.id.boy);
-        girlButton = (RadioButton) findViewById(R.id.girl);
+
+
 
         userGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
 
             public void onCheckedChanged(RadioGroup group, int checkId) {
                 if (checkId == R.id.boy) {
                     boyButton.setBackgroundResource(R.drawable.boy_pressed);
                     girlButton.setBackgroundResource(R.drawable.girl);
+                    editor.putString("userGroup", "boy");
+                    editor.apply();
                     userClicked = true;
                 } else if (checkId == R.id.girl) {
                     boyButton.setBackgroundResource(R.drawable.boy);
                     girlButton.setBackgroundResource(R.drawable.girl_pressed);
+                    editor.putString("userGroup", "girl");
+                    editor.apply();
                     userClicked = true;
                 }
             }
@@ -238,10 +258,6 @@ public class home extends Activity{
 
     }
 
-//    protected void onRestart() {
-//        super.onRestart();
-//
-//    }
 
     public void Settings() {
         startActivity(new Intent(home.this, mobileapplicationdevelopment.flashmath.settings.class));
@@ -252,34 +268,25 @@ public class home extends Activity{
             int level = levelGroup.getCheckedRadioButtonId();
             if (level == easyID) {
                 startGameIntent.putExtra("level", "easy");
-            }
-            else if (level == hardID){
+            } else {
                 startGameIntent.putExtra("level", "hard");
             }
 
             int type = operatorGroup.getCheckedRadioButtonId();
-            if(type == plus) {
+            if (type == plus) {
                 startGameIntent.putExtra("type","plus");
-            }
-            else if (type == minus) {
+            } else if (type == minus) {
                 startGameIntent.putExtra("type", "minus");
-
-            }
-            else if (type == multiply) {
+            } else if (type == multiply) {
                 startGameIntent.putExtra("type", "multiply");
-
-            }
-            else {
+            } else {
                 startGameIntent.putExtra("type", "divide");
-
             }
 
-            if(boyButton.isChecked()) {
+            if (boyButton.isChecked()) {
                 startGameIntent.putExtra("user", "boy");
-            }
-            else
-                startGameIntent.putExtra("user","girl");
-
+            } else
+                startGameIntent.putExtra("user", "girl");
 
             startActivity(startGameIntent);
     }

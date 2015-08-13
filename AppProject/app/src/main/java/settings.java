@@ -153,10 +153,6 @@ public class settings extends Activity{
                 else {
                     UpdateGirlSettings();
                 }
-//                SharedPreferences.Editor editor = preferences.edit();
-//                editor.putInt("boyTarget", boy_target);
-//                editor.putString("boyReward", boy_reward);
-//                editor.apply();
                 BackToHome(v);
             }
         });
@@ -191,10 +187,7 @@ public class settings extends Activity{
                         saveButton.setEnabled(false);
                         ShowBoySettings();
                     }
-
-
-                }
-                else {
+                } else {
                     int starNum = preferences.getInt("girl_stars", 0);
                     if(starNum >= currentTarget) {
                         ShowStarGoal(starNum - currentTarget, currentTarget);
@@ -206,9 +199,7 @@ public class settings extends Activity{
                         saveButton.setEnabled(false);
                         ShowGirlSettings();
                     }
-
                 }
-
             }
         });
 
