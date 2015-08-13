@@ -327,7 +327,7 @@ public class settings extends Activity{
             stars.setText(starNum + " Star, set your target!");
         }
         else
-            stars.setText(starNum +" Stars, set your target!");
+            stars.setText(starNum +" Stars, set target!");
     }
 
 }
