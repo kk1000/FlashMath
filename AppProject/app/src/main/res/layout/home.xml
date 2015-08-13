@@ -204,7 +204,8 @@
                 android:layout_height="wrap_content"
                 android:text = "@string/ok"
                 android:id="@+id/ok"
-                android:layout_weight="0.63" />
+                android:layout_weight="0.63"
+                android:background="#ffff5f"/>
 
         </LinearLayout>
 
@@ -212,11 +213,12 @@
 
     <!--Start Game Button-->
     <Button
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="50dp"
         android:text = "@string/start_game"
         android:background="@drawable/start_button"
-        android:textSize="35sp"
+        android:textSize="40sp"
+        android:textStyle="bold"
         android:id="@+id/start_button"
         android:layout_marginBottom="125dp"
         android:selectAllOnFocus="true"
@@ -226,11 +228,12 @@
 
     <!-- Settings Button-->
     <Button
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="50dp"
         android:id="@+id/settings"
         android:background="@drawable/settings_button"
         android:textSize="40sp"
+        android:textStyle="bold"
         android:text= "@string/settings"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/start_button"
