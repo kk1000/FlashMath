@@ -149,7 +149,7 @@
         android:background="@drawable/button_background"
         android:id="@+id/save"
         android:selectAllOnFocus="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="20dp"
         android:layout_above="@+id/cash"
         android:layout_centerHorizontal="true" />
 
@@ -158,13 +158,16 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:id="@+id/cash"
-        android:background="@drawable/cash_button"
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/cash_icon"
         android:textSize="40sp"
+        android:gravity="left|center"
+        android:textStyle="bold"
         android:text= "@string/cash"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/save"
         android:layout_alignStart="@+id/save"
-        android:layout_marginBottom="35sp" />
+        android:layout_marginBottom="40sp" />
 
     <!-- Cash in notification -->
     <RelativeLayout
@@ -199,12 +202,25 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_background_sharp"
                 android:text = "@string/ok"
+                android:textStyle="bold"
+                android:textSize="25sp"
                 android:id="@+id/okCash"
                 android:layout_weight="0.63" />
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_alignBottom="@+id/cash"
+        android:layout_alignRight="@+id/rewardText"
+        android:layout_alignEnd="@+id/rewardText"
+        android:layout_marginRight="34dp"
+        android:layout_marginEnd="34dp" />
 
 </RelativeLayout>

@@ -172,7 +172,7 @@
 
     <RelativeLayout
         android:layout_width="300dp"
-        android:layout_height="135dp"
+        android:layout_height="133dp"
         android:gravity="center_horizontal"
         android:id="@+id/failToStart"
         android:visibility="gone"
@@ -203,9 +203,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text = "@string/ok"
+                android:textStyle="bold"
+                android:textSize="25sp"
                 android:id="@+id/ok"
                 android:layout_weight="0.63"
-                android:background="#ffff5f"/>
+                android:background="@drawable/button_background_sharp"/>
 
         </LinearLayout>
 
@@ -216,11 +218,13 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:text = "@string/start_game"
-        android:background="@drawable/start_button"
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/play_icon"
+        android:gravity="left|center"
         android:textSize="40sp"
         android:textStyle="bold"
         android:id="@+id/start_button"
-        android:layout_marginBottom="125dp"
+        android:layout_marginBottom="130dp"
         android:selectAllOnFocus="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -231,13 +235,15 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:id="@+id/settings"
-        android:background="@drawable/settings_button"
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/settings_icon"
+        android:gravity="left|center"
         android:textSize="40sp"
         android:textStyle="bold"
         android:text= "@string/settings"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/start_button"
         android:layout_alignStart="@+id/start_button"
-        android:layout_marginBottom="40sp" />
+        android:layout_marginBottom="55sp" />
 
 </RelativeLayout>
