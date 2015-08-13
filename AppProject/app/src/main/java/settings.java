@@ -172,6 +172,7 @@ public class settings extends Activity{
             @Override
             public void onClick(View v) {
                 cashInNotif.setVisibility(View.GONE);
+                saveButton.setEnabled(true);
             }
         });
 
@@ -187,6 +188,7 @@ public class settings extends Activity{
                         editor.putString("boy_reward", "");
                         editor.apply();
                         cashInNotif.setVisibility(View.VISIBLE);
+                        saveButton.setEnabled(false);
                         ShowBoySettings();
                     }
 
@@ -201,6 +203,7 @@ public class settings extends Activity{
                         editor.putString("girl_reward", "");
                         editor.apply();
                         cashInNotif.setVisibility(View.VISIBLE);
+                        saveButton.setEnabled(false);
                         ShowGirlSettings();
                     }
 

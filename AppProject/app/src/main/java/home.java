@@ -209,17 +209,19 @@ public class home extends Activity{
         needToSelectText.setTypeface(myFont);
         final Button okButton = (Button) findViewById(R.id.ok);
         okButton.setTypeface(myFont);
+        final Button StartButton = (Button) findViewById(R.id.start_button);
+        StartButton.setTypeface(myFont);
         final RelativeLayout failStart = (RelativeLayout) findViewById(R.id.failToStart);
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 failStart.setVisibility(View.GONE);
+                SettingsButton.setEnabled(true);
+                StartButton.setEnabled(true);
             }
         });
 
-        final Button StartButton = (Button) findViewById(R.id.start_button);
-        StartButton.setTypeface(myFont);
         StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,6 +230,8 @@ public class home extends Activity{
                             addButton.getId(), subtractButton.getId(), multiplyButton.getId(), divideButton.getId());
                 } else {
                     failStart.setVisibility(View.VISIBLE);
+                    SettingsButton.setEnabled(false);
+                    StartButton.setEnabled(false);
                 }
             }
         });
