@@ -304,6 +304,9 @@ public class settings extends Activity{
     public void ShowStarGoal(int starNum, int StarGoal) {
         if(StarGoal != 0)
             stars.setText(starNum + " / " + StarGoal);
+        else if (starNum == 1) {
+            stars.setText(starNum + " Star, set your target!");
+        }
         else
             stars.setText(starNum +" Stars, set your target!");
     }
