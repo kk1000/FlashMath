@@ -24,9 +24,9 @@ import mobileapplicationdevelopment.flashmath.R;
  * Created by nikolaschaconas on 7/17/15.
  */
 public class home extends Activity{
-    private boolean levelClicked = false;
-    private boolean difficultyClicked = false;
-    private boolean userClicked = false;
+    private boolean levelClicked = true;
+    private boolean difficultyClicked = true;
+    private boolean userClicked = true;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     public TextView myLevel;
@@ -49,19 +49,18 @@ public class home extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-    }
 
-    protected void onStart() {
-        super.onStart();
         preferences = PreferenceManager.getDefaultSharedPreferences(home.this);
         editor = preferences.edit();
         myLevel = (TextView) findViewById(R.id.level);
         myType = (TextView) findViewById(R.id.type);
         User = (TextView) findViewById(R.id.user);
+
         //selecting easy or hard
         levelGroup = (RadioGroup) findViewById(R.id.radioGroupLevel);
         easyButton = (RadioButton) findViewById(R.id.easy);
         hardButton = (RadioButton) findViewById(R.id.hard);
+
 
         //type of math group
         operatorGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -75,8 +74,11 @@ public class home extends Activity{
         boyButton = (RadioButton) findViewById(R.id.boy);
         girlButton = (RadioButton) findViewById(R.id.girl);
 
-        
+    }
 
+    protected void onStart() {
+        super.onStart();
+        
         //saved settings
         String Operation = preferences.getString("operatorGroup", "none");
         if(Operation.equals("add")){
@@ -98,6 +100,13 @@ public class home extends Activity{
             multiplyButton.setChecked(true);
             multiplyButton.setBackgroundResource(R.drawable.multiply_pressed);
             difficultyClicked = true;
+        } else {
+            addButton.setBackgroundResource(R.drawable.addition);
+            subtractButton.setBackgroundResource(R.drawable.subtract);
+            multiplyButton.setBackgroundResource(R.drawable.multiply);
+            divideButton.setBackgroundResource(R.drawable.subtract);
+            difficultyClicked = false;
+
         }
         String Hardness = preferences.getString("difficultyGroup", "none");
         if (Hardness.equals("easy")) {
@@ -109,16 +118,24 @@ public class home extends Activity{
             hardButton.setChecked(true);
             hardButton.setBackgroundResource(R.drawable.hard_pressed);
             levelClicked = true;
+        } else {
+            easyButton.setBackgroundResource(R.drawable.easy);
+            hardButton.setBackgroundResource(R.drawable.hard);
+            levelClicked = false;
         }
         String Users = preferences.getString("userGroup", "none");
         if (Users.equals("boy")) {
             boyButton.setChecked(true);
             boyButton.setBackgroundResource(R.drawable.boy_pressed);
             userClicked = true;
-        } else {
+        } else if (Users.equals("girl")) {
             girlButton.setChecked(true);
             girlButton.setBackgroundResource(R.drawable.girl_pressed);
             userClicked = true;
+        } else {
+            boyButton.setBackgroundResource(R.drawable.boy);
+            girlButton.setBackgroundResource(R.drawable.girl);
+            userClicked = false;
         }
 
 
