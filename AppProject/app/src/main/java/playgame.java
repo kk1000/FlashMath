@@ -38,6 +38,7 @@ public class playgame extends Activity{
     public SharedPreferences.Editor editor;
     public SharedPreferences preferences;
     Boolean newProblem = true;
+    Boolean progressBool = false;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -202,9 +203,9 @@ public class playgame extends Activity{
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putInt("starCounter", stars);
-                editor.apply();
                 startActivity(new Intent(playgame.this, mobileapplicationdevelopment.flashmath.home.class));
+                editor.putInt("starCounter", 0);
+                editor.apply();
             }
         });
 
@@ -296,6 +297,7 @@ public class playgame extends Activity{
                     public void onClick(View v) {
                         //if user has correct answer
                         if(Integer.parseInt(CorrectAnswer.getText().toString()) == getAnswer(answer)) {
+                            progressBool = true;
                             answer.setText("");
                             newProblem = true;
                             red_x.setVisibility(View.GONE);
@@ -377,14 +379,16 @@ public class playgame extends Activity{
         }
 
         progressBar = (ProgressBar) findViewById(R.id.progressBarStar);
+        progressBar.setMax(target);
         starLeft = (TextView) findViewById(R.id.progressText);
         starLeft.setTypeface(myFont);
         // Start long running operation in a background thread
         new Thread(new Runnable() {
             public void run() {
                 while (true) {
-                    if (newProblem) {
+                    if (progressBool) {
                         progressStatus += 1;
+                        progressBool = false;
                     }
                     // Update the progress bar and display the
                     //current value in the text view
@@ -392,28 +396,28 @@ public class playgame extends Activity{
                         public void run() {
                             int total = preferences.getInt("starCounter", 0) + starsSoFar;
                             int diff = target - total;
-                            progressBar.setProgress(progressStatus);
-                            if (diff > 0) {
-                                starLeft.setText(diff + " more Stars until " + reward + "!");
+                            progressBar.setProgress(progressStatus + starsSoFar);
+                            if (target == 0 || reward == "") {
+                                starLeft.setText("You have " + total + " Stars!");
                             } else {
-                                starLeft.setText("You have enough stars for " + reward + "!");
+                                if (diff > 0) {
+                                    starLeft.setText(diff + " more Stars until " + reward + "!");
+                                } else {
+                                    starLeft.setText("You have enough Stars for " + reward + "!");
+                                }
                             }
                         }
                     });
                     try {
                         // Sleep for 200 milliseconds.
                         //Just to display the progress slowly
-                        Thread.sleep(target * 3);
+                        Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }).start();
-
-
-
-
 
 
     }
