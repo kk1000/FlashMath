@@ -94,7 +94,7 @@ public class home extends Activity{
         else if (Operation.equals("divide")) {
             divideButton.setChecked(true);
             divideButton.setBackgroundResource(R.drawable.divide_pressed);
-            editor.apply();
+            difficultyClicked = true;
         }
         else if (Operation.equals("multiply")) {
             multiplyButton.setChecked(true);
